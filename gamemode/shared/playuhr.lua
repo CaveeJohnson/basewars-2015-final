@@ -26,7 +26,7 @@ if SERVER then
 		end)
 	end
 
-	hook.Add("Initialize", function()
+	hook.Add("Initialize", "PlayTime.Initialize", function()
 		PlayTime.LastThink = CurTime() + 1	--Not needed? Don't know
 	end)
 
@@ -81,6 +81,7 @@ end
 
 function PLAYER:GetSessionTime()
 	if SERVER then
+		self.JoinTime = self.JoinTime or CurTime()
 		return math.Round(CurTime() - self.JoinTime)
 	else
 		return tonumber(self:GetNW2String("SessionTime", "0"))

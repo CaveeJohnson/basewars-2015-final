@@ -38,7 +38,7 @@ function ENT:Initialize()
 	self:PhysicsInit(SOLID_BBOX)
 	self:SetSolid(SOLID_BBOX)
 	self:SetMoveType(MOVETYPE_NONE)
-	self:SetUseType(USE_SIMPLE)
+	self:SetUseType(SIMPLE_USE)
 
 	self.IDLESequence = 17--self:LookupSequence("idle_angry")
 

@@ -297,7 +297,7 @@ local function ScanEntities()
 end
 
 function GM:PlayerShouldTakeDamage(ply, atk)
-	if aowl and ply.Unrestricted then
+	if aowl and (ply.Unrestricted or ply:GetNWBool("Unrestricted")) then
 		return false
 	end
 

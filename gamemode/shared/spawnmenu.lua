@@ -5,7 +5,7 @@ SpawnList = BaseWars.SpawnList
 local function LimitDeduct(self, ent, ply)
 	local buyerSteamid = ply:SteamID()
 
-	self.o_OnRemove = self.OnRemove
+	self.o_OnRemove = self.OnRemove or function() end
 	self.OnRemove = function(e)
 		local ply = BaseWars.Ents:ValidPlayer(ply)
 

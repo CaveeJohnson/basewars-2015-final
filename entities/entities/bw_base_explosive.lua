@@ -70,7 +70,7 @@ if SERVER then
 
 	local plant = Sound("weapons/c4/c4_plant.wav")
 	function ENT:Plant(ent)
-		if not self.OnlyPlantWorld then self:SetParent(ent) end
+		if not self.OnlyPlantWorld and IsEntity(ent) then self:SetParent(ent) end
 		self:SetMoveType(MOVETYPE_NONE)
 		self:EmitSound(plant)
 		self:StartCountdown()

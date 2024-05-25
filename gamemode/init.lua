@@ -434,6 +434,7 @@ end
 function GM:PlayerSpawn(ply)
 	self.BaseClass.PlayerSpawn(self, ply)
 	self:SetPlayerSpeed(ply, BaseWars.Config.DefaultWalk, BaseWars.Config.DefaultRun)
+	ply:SetArmor(100)
 
 	local Spawn = ply.SpawnPoint
 	if BaseWars.Ents:Valid(Spawn) and (not Spawn.IsPowered or Spawn:IsPowered()) then

@@ -106,6 +106,22 @@ if SERVER then
 		exp.Owner = self.Owner
 		exp:SetOwner(self.Owner)
 
+		-- remove props explicitly
+		for k,v in pairs(ents.FindInSphere(self:GetPos(), 300)) do
+			if IsValid(v) and v:GetClass() == "prop_physics" then 
+				local Attacker = self.Owner
+				local Owner = BaseWars.Ents:ValidOwner(v)
+				if IsValid(Attacker) and IsValid(Owner) then
+					local RaidLogic 	= (Attacker == Owner and Owner:InRaid()) or (Owner:InFaction() and (not Attacker == Owner and Attacker.InFaction and Attacker:InFaction(Owner:GetFaction())))
+					local RaidLogic2 	= Attacker ~= Owner and (not Owner:InRaid() or not (Attacker.InRaid and Attacker:InRaid()))
+				
+					if not (not Attacker:InRaid() or (RaidLogic or RaidLogic2)) then
+						SafeRemoveEntity(v)
+					end
+				end
+			end
+		end
+
 		self:ExplodeEffects()
 
 		if self.Cluster then

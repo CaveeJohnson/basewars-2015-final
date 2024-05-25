@@ -72,7 +72,7 @@ function SWEP:PrimaryAttack()
 
 	self:ShootEffects()
 	if SERVER and IsFirstTimePredicted() then
-		ent:SetHealth(ent:Health() - self.Primary.Damage)
+		ent:SetHealth(ent:Health() - (ent:GetMaxHealth() * 0.1))
 
 		if ent:Health() < 1 then
 			ent:Remove()

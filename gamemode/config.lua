@@ -39,9 +39,9 @@ BaseWars.Config = {
 	XPMultiplier = 1.0,
 
 	-- Forums: Link to your forums, accessed with /forums
-	Forums 		= "http://hexahedron.pw/forums/",
+	Forums 		= "http://loading.catgirls.co/",
 	-- SteamGroup: Link to your steam group, accessed with /steam
-	SteamGroup 	= "http://steamcommunity.com/groups/hexahedronic",
+	SteamGroup 	= "http://loading.catgirls.co/",
 	-- Workshop: Link to your workshop download, accessed with /workshop
 	Workshop    = "http://steamcommunity.com/sharedfiles/filedetails/?id=3251599534",
 	-- Discord: Link to your discord server, accessed with /discord
@@ -87,15 +87,15 @@ BaseWars.Config = {
 			-- JumpHeight: The velocity vector applied when double jumping
 			JumpHeight 	= Vector(0, 0, 320),
 			-- Duration: Duration of the drug
-			Duration	= 120,
+			Duration	= 300,
 		},
 		Steroid = {
 			-- Walk: New walk speed when using drug
-			Walk 		= 330,
+			Walk 		= 175,
 			-- Run: New run speed when using drug
-			Run 		= 580,
+			Run 		= 375,
 			-- Duration: Duration of the drug
-			Duration	= 120,
+			Duration	= 300,
 		},
 		Regen = {
 			-- Duration: Duration of the drug
@@ -109,13 +109,13 @@ BaseWars.Config = {
 		},
 		PainKiller = {
 			-- Mult: Damage multiplier while using drug
-			Mult 		= .675,
+			Mult 		= .85,
 			-- Duration: Duration of the drug
 			Duration	= 80,
 		},
 		Rage = {
 			-- Mult: Damage multiplier while using drug
-			Mult 		= 1.675,
+			Mult 		= 1.2,
 			-- Duration: Duration of the drug
 			Duration	= 120,
 		},
@@ -181,7 +181,7 @@ BaseWars.Config = {
 		-- IsHTML: Is the next variable HTML, if not it is a URI to a valid HTML file
 		IsHTML 	= false,
 		-- HTML: HTML string or valid URI
-		HTML	= "http://hexahedron.pw/forums/showthread.php?tid=16&pid=33#pid33",
+		HTML	= "http://loading.catgirls.co/",
 	},
 
 	Adverts = {

@@ -96,10 +96,11 @@ if SERVER then
 		self:SetNW2Bool("show", false)
 
 		local exp = ents.Create("env_explosion")
+		local selfPos = self:GetPos()
 
 		exp:SetKeyValue("iMagnitude", self.ExplodeRadius)
 		exp:SetKeyValue("spawnflags", 64)
-		exp:SetPos(self:GetPos())
+		exp:SetPos(selfPos)
 		exp:Spawn()
 		exp:Activate()
 		exp:Fire("explode")
@@ -107,16 +108,25 @@ if SERVER then
 		exp:SetOwner(self.Owner)
 
 		-- remove props explicitly
-		for k,v in pairs(ents.FindInSphere(self:GetPos(), 300)) do
+		local sqrRadius = self.ExplodeRadius ^ 2
+		for k,v in pairs(ents.FindInSphere(selfPos, self.ExplodeRadius)) do
 			if IsValid(v) and v:GetClass() == "prop_physics" then 
 				local Attacker = self.Owner
 				local Owner = BaseWars.Ents:ValidOwner(v)
 				if IsValid(Attacker) and IsValid(Owner) then
-					local RaidLogic 	= (Attacker == Owner and Owner:InRaid()) or (Owner:InFaction() and (not Attacker == Owner and Attacker.InFaction and Attacker:InFaction(Owner:GetFaction())))
-					local RaidLogic2 	= Attacker ~= Owner and (not Owner:InRaid() or not (Attacker.InRaid and Attacker:InRaid()))
+					local RaidLogic  = (Attacker == Owner and Owner:InRaid()) or (Owner:InFaction() and (not Attacker == Owner and Attacker.InFaction and Attacker:InFaction(Owner:GetFaction())))
+					local RaidLogic2 = Attacker ~= Owner and (not Owner:InRaid() or not (Attacker.InRaid and Attacker:InRaid()))
 				
 					if not (not Attacker:InRaid() or (RaidLogic or RaidLogic2)) then
-						SafeRemoveEntity(v)
+						local dmg = self.ExplodeRadius * (1 - (selfPos:DistToSqr(v:GetPos()) / sqrRadius))
+						v:SetHealth(v:Health() - dmg)
+
+						if v:Health() < 1 then
+							SafeRemoveEntity(v)
+						else
+							local c = (v:Health() / v:GetMaxHealth()) * 255
+							v:SetColor(Color(c, c, c, 255))
+						end
 					end
 				end
 			end

@@ -4,7 +4,7 @@ ENT.Base = "bw_base_moneyprinter"
 ENT.Model = "models/props_lab/reciever01a.mdl"
 ENT.Skin = 0
 
-ENT.Capacity 		= 2750000000
+ENT.Capacity 		= 10000000000
 ENT.PrintInterval 	= 1
 ENT.PrintAmount		= 9750000
 

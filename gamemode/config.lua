@@ -958,3 +958,9 @@ BaseWars.SpawnList.Entities["Constructs"] = {
     ["Assembler Power-Core"] = BaseWars.GSL{Model = "models/props/de_nuke/powerplanttank.mdl", Price = 1e11, ClassName = "bw_gen_assembler", Limit = 9},
 
 }
+
+BaseWars.SpawnList.Entities["Money Vaults (T0)"] = {
+	["T1 Money Vault"]					= BaseWars.GSL{Model = "models/props_c17/FurnitureDrawer001a.mdl", Price = 4e4, ClassName = "bw_vault", Limit = 1, Level = 5},
+	["T1 Money Vault (VIP)"]			= BaseWars.GSL{Model = "models/props_c17/FurnitureDrawer001a.mdl", Price = 40001, ClassName = "bw_vault_vip", Limit = 1, Level = 5, VIP = true},
+	["T2 Money Vault"]					= BaseWars.GSL{Model = "models/props/de_nuke/nuclearcontainerboxclosed.mdl", Price = 1e7, ClassName = "bw_vault_improved", Limit = 1, Level = 35},
+}

@@ -376,7 +376,7 @@ if CLIENT then
 		end
 
 		local ang = self:GetAngles()
-		local pos = self:GetPos()+ang:Forward()*14.75+ang:Right()*(14)+ang:Up()*17
+		local pos = self:GetPos()+ang:Forward()*15+ang:Right()*(14)+ang:Up()*17
 		ang:RotateAroundAxis(ang:Forward(), 90)
 		ang:RotateAroundAxis(ang:Right(), 270)
 		local scale = 0.035

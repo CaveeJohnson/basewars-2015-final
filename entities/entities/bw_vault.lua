@@ -133,7 +133,7 @@ function ENT:Calc3D2DParams()
 	local ang = self:GetAngles()
 
 	pos = pos + ang:Up() * 13.09
-	pos = pos + ang:Forward() * 12.35
+	pos = pos + ang:Forward() * 12.55
 	pos = pos + ang:Right() * 10.82
 
 	ang:RotateAroundAxis(ang:Up(), 90)

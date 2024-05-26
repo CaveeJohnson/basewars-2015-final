@@ -6,7 +6,7 @@ ENT.Skin = 0
 
 ENT.Capacity 		= 675000000
 ENT.PrintInterval 	= 1
-ENT.PrintAmount		= 500000
+ENT.PrintAmount		= 675000
 
 ENT.PrintName = "VIP Printer 3"
 

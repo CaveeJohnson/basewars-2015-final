@@ -38,17 +38,8 @@ function ENT:hitTarget(target)
 
 		target:RemoveDrug("steroid") -- bad! no buy drug
 
-		if target:GetPrestige( "perk", "speedperk" ) >= 1 then
-
-			target:SetWalkSpeed( BaseWars.Config.DefaultWalk + BaseWars.Config.Perks["speedperk"]["WalkAdditions"] * target:GetPrestige( "perk", "speedperk" ) )
-			target:SetRunSpeed( BaseWars.Config.DefaultRun + BaseWars.Config.Perks["speedperk"]["RunAdditions"] * target:GetPrestige( "perk", "speedperk" ) )
-
-		else
-
-			target:SetWalkSpeed(BaseWars.Config.DefaultWalk)
-			target:SetRunSpeed(BaseWars.Config.DefaultRun)
-
-		end
+		target:SetWalkSpeed(BaseWars.Config.DefaultWalk)
+		target:SetRunSpeed(BaseWars.Config.DefaultRun)
 
 	end)
 

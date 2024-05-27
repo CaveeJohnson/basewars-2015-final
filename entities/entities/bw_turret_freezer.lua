@@ -30,17 +30,8 @@ function ENT:hitTarget(target)
 	target:RemoveDrug("steroid")
 	target:ApplyDrug("Stun", 25)
 
-	if target:GetPrestige( "perk", "speedperk" ) >= 2 then
-
-		target:SetWalkSpeed( BaseWars.Config.DefaultWalk + BaseWars.Config.Perks["speedperk"]["WalkAdditions"] * target:GetPrestige( "perk", "speedperk" ) / ( self:GetLevel() * 2 ) )
-		target:SetRunSpeed( BaseWars.Config.DefaultWalk + BaseWars.Config.Perks["speedperk"]["WalkAdditions"] * target:GetPrestige( "perk", "speedperk" ) / ( self:GetLevel() * 2 ) )
-
-	else
-
-		target:SetWalkSpeed(BaseWars.Config.DefaultWalk * 2.5 / ( self:GetLevel() * 2 ) )
-		target:SetRunSpeed(BaseWars.Config.DefaultWalk * 2.5 / ( self:GetLevel() * 2 ) )
-
-	end
+	target:SetWalkSpeed(BaseWars.Config.DefaultWalk * 2.5 / ( self:GetLevel() * 2 ) )
+	target:SetRunSpeed(BaseWars.Config.DefaultWalk * 2.5 / ( self:GetLevel() * 2 ) )
 
 	timer.Create("tower_freeze_" .. tostring(target), self.FreezeTime, 1, function()
 		if not IsValid(target) then return end

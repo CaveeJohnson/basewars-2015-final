@@ -27,12 +27,16 @@ ENT.Sound =  "mvm/mvm_money_pickup.wav"
 ENT.ShieldMax = 1500
 ENT.ShieldRate = 2
 
-local UpgradeCost = {5e9, 25e9, 125e9, 500e9, 0}
+ENT.CollectInterval = 10 -- also interest interval for sake of simplicity
+ENT.InterestRate    = 0.001
+
+ENT.UpgradeCost = {5e9, 25e9, 125e9, 500e9, 0}
+local UpgradeCost = ENT.UpgradeCost
 
 function ENT:StableNetwork()
 	self:NetworkVar("Float", 2, "Money")
 	self:NetworkVar("Int", 3, "Upgrades")
-	self:NetworkVar("Int", 4, "UpgradeCost")
+	-- self:NetworkVar("String", 4, "UpgradeCost")
 	self:NetworkVar("Float", 5, "Rate")
 	self:NetworkVar("Int", 6, "Shield")
 end
@@ -53,7 +57,7 @@ function ENT:Init()
 
 	self.MoneyStored = 0
 	self.CurrentValue = 1
-	self:SetUpgradeCost(UpgradeCost[1])
+	self:SetNW2String("UpgradeCost",tostring(UpgradeCost[1]))
 	self.UpgradeValue = 0
 
 	self:SetShield(0)
@@ -124,6 +128,9 @@ if SERVER then
 		if Upgrades >= 2 then
 			self.CurrentValue = (self.UpgradeValue or 0) + self:GetMoney() * 1.4
 		end
+
+        print("add interest", math.floor(oldMoney * (0 + self.InterestRate)))
+		self:SetMoney(newMoney + math.floor(oldMoney * (0 + self.InterestRate)))
 		
 		self.Time=CurTime()
 
@@ -164,14 +171,15 @@ if SERVER then
 
 	function ENT:Upgrade(ply)
 		if not ply:IsPlayer() then return end
-		if ply:GetMoney() < self:GetUpgradeCost() then ply:Notify(BaseWars.LANG.UpgradeNoMoney, BASEWARS_NOTIFICATION_ERROR) return end
+		local cost = tonumber(self:GetNW2String("UpgradeCost"))
+		if ply:GetMoney() < cost then ply:Notify(BaseWars.LANG.UpgradeNoMoney, BASEWARS_NOTIFICATION_ERROR) return end
 		if self:GetUpgrades() + 1 > 4 then ply:Notify(BaseWars.LANG.UpgradeMaxLevel, BASEWARS_NOTIFICATION_ERROR) return end
 
-			ply:TakeMoney(self:GetUpgradeCost())
-			self.CurrentValue = (self.CurrentValue or 0) + self:GetUpgradeCost()
-			self.UpgradeValue = self.UpgradeValue + self:GetUpgradeCost()
+			ply:TakeMoney(cost)
+			self.CurrentValue = (self.CurrentValue or 0) + cost
+			self.UpgradeValue = self.UpgradeValue + cost
 			self:SetUpgrades(self:GetUpgrades()+1)
-			self:SetUpgradeCost(UpgradeCost[self:GetUpgrades()+1])
+			self:SetNW2String("UpgradeCost",tostring(UpgradeCost[self:GetUpgrades()+1]))
 
 		if self:GetUpgrades() >= 3 then
 			self.Radius=500
@@ -315,8 +323,12 @@ if CLIENT then
 
 		draw.DrawText("Bank", font..".Title", 400, -50+anim, Color(255,0,0, alpha-20), TEXT_ALIGN_CENTER)
 
+        local money = tonumber(self:GetMoney())
+		local interest = string.format("Interest: %s%% | Next Gain: %s", self.InterestRate * 100, string.format(BaseWars.LANG.CURFORMER, BaseWars.NumberFormat(math.floor(money * self.InterestRate))))
+		draw.DrawText(interest, font..".Small", 400, 50, Color(255,0,0, alpha-20), TEXT_ALIGN_CENTER)
 
-		local money = BaseWars.LANG.CURRENCY .. BaseWars.NumberFormat(tonumber(self:GetMoney()) or 0)
+
+		money = BaseWars.LANG.CURRENCY .. BaseWars.NumberFormat(money or 0)
 		local rate =  BaseWars.LANG.CURRENCY .. BaseWars.NumberFormat(tonumber(self:GetRate()) or 0) .. "/s"
 
 		draw.DrawText(money, font, 400, 150, Color(255,255,255, alpha-50), TEXT_ALIGN_CENTER)
@@ -352,7 +364,7 @@ if CLIENT then
 
 		if not textanim or textanim > 35 then return end
 
-		draw.DrawText("Next upgrade: " .. BaseWars.LANG.CURRENCY .. BaseWars.NumberFormat(self:GetUpgradeCost()), font, 400, 500+textanim*2, Color(255,255,255, textalpha-50), TEXT_ALIGN_CENTER)
+		draw.DrawText("Next upgrade: " .. BaseWars.LANG.CURRENCY .. BaseWars.NumberFormat(tonumber(self:GetNW2String("UpgradeCost"))), font, 400, 500+textanim*2, Color(255,255,255, textalpha-50), TEXT_ALIGN_CENTER)
 		draw.DrawText(UpgDesc[self:GetUpgrades()+1], "VaultFont.Small", 36, 600+textanim*2, Color(230,230,230, textalpha-50), TEXT_ALIGN_LEFT)
 	end
 

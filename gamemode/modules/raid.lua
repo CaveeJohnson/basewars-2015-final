@@ -90,6 +90,8 @@ function MODULE:CheckForNULL()
 
 	if not BaseWars.Ents:ValidPlayer(Participant1) or not BaseWars.Ents:ValidPlayer(Participant2) then
 
+		ErrorNoHalt("player not valid", Participant1, Participant2)
+
 		return false
 
 	end
@@ -100,6 +102,8 @@ function MODULE:CheckForNULL()
 		local F2 = BaseWars.Factions:FactionExist(P2Faction)
 
 		if not F1 or not F2 then
+
+			ErrorNoHalt("faction not valid", P1Faction, F1, P2Faction F2)
 
 			return false
 

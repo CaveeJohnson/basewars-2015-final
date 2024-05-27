@@ -100,10 +100,13 @@ if SERVER then
 		
 			addedLevels = addedLevels + 1
 			xp = xp - neededxp
-			xp = ply:GetXP()
 		end
-		if xp ~= starting then
+
+		if addedLevels > 0 then
 			ply:AddLevel(addedLevels)
+		end
+		
+		if xp ~= starting then
 			ply:SetXP(xp)
 		end
 

@@ -795,6 +795,7 @@ BaseWars.SpawnList.Entities["Generators (T2)"] = {
 BaseWars.SpawnList.Entities["Generators (T3)"] = {
 
 	["Dark Fusion Reactor"]				= BaseWars.GSL{Model = "models/props/de_train/pallet_barrels.mdl", Price = 250000000, ClassName = "bw_gen_dark", Level = 125},
+	["Antimatter Generator"]			= BaseWars.GSL{Model = "models/props_combine/combine_light001b.mdl", Price = 15e9, ClassName = "bw_gen_antimatter", Level = 250},
 
 }
 
@@ -939,6 +940,34 @@ BaseWars.SpawnList.Entities["Printers (T4)"] = {
 	["Quasar Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 45000000000, ClassName = "bw_printer_quasar", Level = 400},
 
 	["T4 VIP Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 45000000001, ClassName = "bw_printer_vip4", VIP = true},
+
+}
+
+BaseWars.SpawnList.Entities["Printers (T5)"] = {
+
+	-- T5
+	["Brown Dwarf Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 200e9, ClassName = "bw_printer_browndwarf", Level = 450},
+	["Red Dwarf Printer"]			= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 400e9, ClassName = "bw_printer_reddwarf", Level = 475},
+	["White Dwarf Printer"]			= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 520e9, ClassName = "bw_printer_whitedwarf", Level = 500},
+	["Red Giant Printer"]			= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 670e9, ClassName = "bw_printer_redgiant", Level = 550},
+	["Neutron Star Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 870e9, ClassName = "bw_printer_neutron", Level = 575},
+	["Black Hole Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 115e10, ClassName = "bw_printer_blackhole", Level = 600},
+
+	["T5 VIP Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 116e10, ClassName = "bw_printer_vip5", VIP = true},
+
+}
+
+BaseWars.SpawnList.Entities["Printers (T6)"] = {
+
+	-- T6
+	["Einstein Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 570e10, ClassName = "bw_printer_einstein", Level = 650},
+	["Euler Printer"]			= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 750e10, ClassName = "bw_printer_euler", Level = 700},
+	["Newton Printer"]			= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 970e10, ClassName = "bw_printer_newton", Level = 750},
+	["Hawking Printer"]			= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 125e11, ClassName = "bw_printer_hawking", Level = 800},
+	["Tesla Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 160e11, ClassName = "bw_printer_tesla", Level = 900},
+	["Planck Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 210e11, ClassName = "bw_printer_planck", Level = 1000},
+
+	["T6 VIP Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 211e11, ClassName = "bw_printer_vip6", VIP = true},
 
 }
 

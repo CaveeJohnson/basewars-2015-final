@@ -15,5 +15,5 @@ ENT.BackColor = Color(128, 0, 0)
 
 ENT.IsValidRaidable = true
 
-ENT.PresetMaxHealth = 6750
+ENT.PresetMaxHealth = 4250
 ENT.PowerRequired = 25

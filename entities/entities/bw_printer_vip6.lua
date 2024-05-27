@@ -4,11 +4,11 @@ ENT.Base = "bw_base_moneyprinter"
 ENT.Model = "models/props_lab/reciever01a.mdl"
 ENT.Skin = 0
 
-ENT.Capacity 		= 700000000
+ENT.Capacity 		= 26e12
 ENT.PrintInterval 	= 1
-ENT.PrintAmount		= 675000
+ENT.PrintAmount		= 165e8
 
-ENT.PrintName = "VIP Printer 3"
+ENT.PrintName = "VIP Printer 6"
 
 ENT.FontColor = color_white
 ENT.BackColor = color_black
@@ -28,3 +28,4 @@ end
 ENT.IsValidRaidable = true
 
 ENT.PresetMaxHealth = 4500
+ENT.PowerRequired = 55

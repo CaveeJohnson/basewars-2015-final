@@ -27,5 +27,5 @@ end
 
 ENT.IsValidRaidable = true
 
-ENT.PresetMaxHealth = 10000
+ENT.PresetMaxHealth = 4500
 ENT.PowerRequired = 35

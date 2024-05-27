@@ -52,6 +52,7 @@ BaseWars.Config = {
 	-- VIPRanks: Table of ranks which VIP items and ScaleVIPPayDay, etc applies to
 	VIPRanks = {
 		"donators",
+		"moderator",
 	},
 
 	-- MaximumPay: Maximum amount players can give eachother, helps stop inflation
@@ -304,7 +305,7 @@ BaseWars.Config = {
 		-- BuyWeapons: Level needed to buy weapons, this is 2 to stop people wasting their starter money
 		BuyWeapons = 2,
 		-- MaxLevel: Maximum level you can be
-		MaxLevel = 9999,
+		MaxLevel = 99999,
 	},
 
 }
@@ -419,7 +420,7 @@ BaseWars.NPCTable.basewars_bangclaw_v1 = BaseWars.NPCTable.rp_bangclaw
 -- Empty the table if you dont want this
 BaseWars.AdvertTbl = {
 
-	{Grey, "Remember to join our ", NiceGreen, "Steam Group", Grey, "! (/steam)"},
+	-- {Grey, "Remember to join our ", NiceGreen, "Steam Group", Grey, "! (/steam)"},
 	-- {Grey, "You can find out more on the ", NiceGreen, "Forums", Grey, "! (/forums)"},
 	{Grey, "To download our content manually, type ", NiceGreen, "/workshop"},
 	{Grey, "We have a ", NiceGreen, "discord", Grey, "! (/discord)"}
@@ -658,6 +659,8 @@ BaseWars.Config.CommandsHelp = {
 -- First argument is the category name, second is the icon16 name
 -- See http://www.famfamfam.com/lab/icons/silk/preview.php for a list of icon16 icons.
 -- As of 1.2.1 the category names can now be multiple words
+BaseWars.SpawnList.Printers =  BaseWars.NewCAT("Printers", "icon16/coins.png")
+BaseWars.SpawnList.Defence =  BaseWars.NewCAT("Defence", "icon16/building_key.png")
 BaseWars.SpawnList.Entities = BaseWars.NewCAT(BaseWars.LANG.Entities, "icon16/bricks.png")
 BaseWars.SpawnList.Loadout =  BaseWars.NewCAT(BaseWars.LANG.Loadout, "icon16/gun.png")
 
@@ -837,7 +840,7 @@ BaseWars.SpawnList.Entities["Structures (T2)"] = {
 
 }
 
-BaseWars.SpawnList.Entities["Defense (T1)"] = {
+BaseWars.SpawnList.Defence["Defence (T1)"] = {
 
 	-- T1
 	["Explosive Mine"] 				= BaseWars.GSL{Model = "models/props_combine/combine_mine01.mdl", Price = 40000, ClassName = "bw_explosive_mine", Limit = 8, Level = 9, ShouldFreeze = false},
@@ -846,7 +849,7 @@ BaseWars.SpawnList.Entities["Defense (T1)"] = {
 
 }
 
-BaseWars.SpawnList.Entities["Defense (T2)"] = {
+BaseWars.SpawnList.Defence["Defence (T2)"] = {
 
 	-- T2
 	["Fast Mine"] 				= BaseWars.GSL{Model = "models/props_combine/combine_mine01.mdl", Price = 80000, ClassName = "bw_explosive_mine_speed", Limit = 5, Level = 20, ShouldFreeze = false},
@@ -876,7 +879,7 @@ BaseWars.SpawnList.Entities["Consumables (T2)"] = {
 }
 
 
-BaseWars.SpawnList.Entities["Printers (T0)"] = {
+BaseWars.SpawnList.Printers["Printers (T0)"] = {
 
 	["Wooden Printer"]				= BaseWars.GSL{Model = "models/props_junk/wood_crate001a.mdl", Price = 200, ClassName = "bw_printer_wooden"},
 	["Plastic Printer"]				= BaseWars.GSL{Model = "models/props_lab/partsbin01.mdl", Price = 500, ClassName = "bw_printer_plastic"},
@@ -887,7 +890,7 @@ BaseWars.SpawnList.Entities["Printers (T0)"] = {
 
 }
 
-BaseWars.SpawnList.Entities["Printers (T1)"] = {
+BaseWars.SpawnList.Printers["Printers (T1)"] = {
 
 	-- T1
 	["Copper Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 12500, ClassName = "bw_printer_copper", Level = 3},
@@ -901,7 +904,7 @@ BaseWars.SpawnList.Entities["Printers (T1)"] = {
 
 }
 
-BaseWars.SpawnList.Entities["Printers (T2)"] = {
+BaseWars.SpawnList.Printers["Printers (T2)"] = {
 
 	-- T2
 	["Emerald Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 15000000, ClassName = "bw_printer_emerald", Level = 50},
@@ -915,7 +918,7 @@ BaseWars.SpawnList.Entities["Printers (T2)"] = {
 
 }
 
-BaseWars.SpawnList.Entities["Printers (T3)"] = {
+BaseWars.SpawnList.Printers["Printers (T3)"] = {
 
 	-- T3
 	["Technetium Printer"]    		= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 550000000, ClassName = "bw_printer_technetium", Level = 125},
@@ -929,7 +932,7 @@ BaseWars.SpawnList.Entities["Printers (T3)"] = {
 
 }
 
-BaseWars.SpawnList.Entities["Printers (T4)"] = {
+BaseWars.SpawnList.Printers["Printers (T4)"] = {
 
 	-- T4
 	["Mobius Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 13000000000, ClassName = "bw_printer_mobius", Level = 275},
@@ -943,7 +946,7 @@ BaseWars.SpawnList.Entities["Printers (T4)"] = {
 
 }
 
-BaseWars.SpawnList.Entities["Printers (T5)"] = {
+BaseWars.SpawnList.Printers["Printers (T5)"] = {
 
 	-- T5
 	["Brown Dwarf Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 200e9, ClassName = "bw_printer_browndwarf", Level = 450},
@@ -957,7 +960,7 @@ BaseWars.SpawnList.Entities["Printers (T5)"] = {
 
 }
 
-BaseWars.SpawnList.Entities["Printers (T6)"] = {
+BaseWars.SpawnList.Printers["Printers (T6)"] = {
 
 	-- T6
 	["Einstein Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 570e10, ClassName = "bw_printer_einstein", Level = 650},
@@ -988,7 +991,7 @@ BaseWars.SpawnList.Entities["Constructs"] = {
 
 }
 
-BaseWars.SpawnList.Entities["Money Vaults (T0)"] = {
+BaseWars.SpawnList.Printers["Money Vaults (T0)"] = {
 	["T1 Money Vault"]					= BaseWars.GSL{Model = "models/props_c17/FurnitureDrawer001a.mdl", Price = 4e4, ClassName = "bw_vault", Limit = 1, Level = 5},
 	["T1 Money Vault (VIP)"]			= BaseWars.GSL{Model = "models/props_c17/FurnitureDrawer001a.mdl", Price = 40001, ClassName = "bw_vault_vip", Limit = 1, Level = 5, VIP = true},
 	["T2 Money Vault"]					= BaseWars.GSL{Model = "models/props/de_nuke/nuclearcontainerboxclosed.mdl", Price = 5e9, ClassName = "bw_vault_improved", Limit = 1, Level = 35},

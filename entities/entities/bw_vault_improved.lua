@@ -129,7 +129,6 @@ if SERVER then
 			self.CurrentValue = (self.UpgradeValue or 0) + self:GetMoney() * 1.4
 		end
 
-        print("add interest", math.floor(oldMoney * (0 + self.InterestRate)))
 		self:SetMoney(newMoney + math.floor(oldMoney * (0 + self.InterestRate)))
 		
 		self.Time=CurTime()

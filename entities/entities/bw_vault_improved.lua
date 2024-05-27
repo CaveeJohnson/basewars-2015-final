@@ -91,32 +91,31 @@ if SERVER then
 
 		for k,v in pairs(ents.FindInSphere(self:GetPos(), self.Radius)) do
 
-			if not v.IsPrinter then continue end
+			if not BaseWars.Ents:Valid(v) then continue end
+			if v:IsPlayer() then continue end
+			if not v.TakeMoney then continue end
+			if v:CPPIGetOwner() ~= owner then continue end
 
-			if v:CPPIGetOwner() == owner then 
+			v.Vault = self
+			self:SetMoney(self:GetMoney() + v:GetMoney())
+			v:SetMoney(0)
 
-				v.Vault = self
-				self:SetMoney(self:GetMoney() + v:GetMoney())
-				v:SetMoney(0)
+			self:DrainPower( math.min(math.sqrt(v:GetMoney()), 15000) )	
 
-				self:DrainPower( math.min(math.sqrt(v:GetMoney()), 15000) )	
-
-				if Upgrades >= 1 then
-					if v:GetPaper() + 5 <= v.MaxPaper then 
-						v:SetPaper(v:GetPaper() + 5)
-					end
+			if Upgrades >= 1 then
+				if v:GetPaper() + 5 <= v.MaxPaper then 
+					v:SetPaper(v:GetPaper() + 5)
 				end
+			end
 
-				if owner:InRaid() and Upgrades == 4 and not self.Exhausted and v.SetDisabled then 
+			if owner:InRaid() and Upgrades == 4 and not self.Exhausted and v.SetDisabled then 
 
-					v:SetDisabled(true)
+				v:SetDisabled(true)
 
-				end
+			end
 
-				if (not owner:InRaid() or self.Exhausted) and v.SetDisabled then 
-					v:SetDisabled(false) 
-				end
-
+			if (not owner:InRaid() or self.Exhausted) and v.SetDisabled then 
+				v:SetDisabled(false) 
 			end
 
 		end

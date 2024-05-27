@@ -38,7 +38,8 @@ BaseWars.Config = {
 	-- To further customize XP distribution see server/hooks.lua
 	XPMultiplier = 1.0,
 
-	-- Forums: Link to your forums, accessed with /forums
+	-- Forums: Li
+	Forums 		= "http://hexahedron.pw/forum
 	Forums 		= "http://loading.catgirls.co/",
 	-- SteamGroup: Link to your steam group, accessed with /steam
 	SteamGroup 	= "http://loading.catgirls.co/",
@@ -660,9 +661,13 @@ BaseWars.Config.CommandsHelp = {
 -- See http://www.famfamfam.com/lab/icons/silk/preview.php for a list of icon16 icons.
 -- As of 1.2.1 the category names can now be multiple words
 BaseWars.SpawnList.Printers =  BaseWars.NewCAT("Printers", "icon16/coins.png")
-BaseWars.SpawnList.Defence =  BaseWars.NewCAT("Defence", "icon16/building_key.png")
-BaseWars.SpawnList.Entities = BaseWars.NewCAT(BaseWars.LANG.Entities, "icon16/bricks.png")
+BaseWars.SpawnList.Consumables = BaseWars.NewCAT("Consumables", "icon16/briefcase.png")
+BaseWars.SpawnList.Defence = BaseWars.NewCAT("Defence", "icon16/exclamation.png")
+BaseWars.SpawnList.Generators = BaseWars.NewCAT("Generators", "icon16/wrench.png")
+BaseWars.SpawnList.Structures = BaseWars.NewCAT("Structures", "icon16/house.png")
 BaseWars.SpawnList.Loadout =  BaseWars.NewCAT(BaseWars.LANG.Loadout, "icon16/gun.png")
+BaseWars.SpawnList.EndGame = BaseWars.NewCAT("End Game", "icon16/wrench_orange.png")
+BaseWars.SpawnList.Raiding = BaseWars.NewCAT("Raiding", "icon16/bomb.png")
 
 -- Default weapons not working? Install these
 -- https://steamcommunity.com/sharedfiles/filedetails/?id=349050451
@@ -685,212 +690,23 @@ BaseWars.SpawnList.Loadout =  BaseWars.NewCAT(BaseWars.LANG.Loadout, "icon16/gun
 
 -- Look below for a LOT of examples
 
-BaseWars.SpawnList.Loadout["Weapons (T1)"] = {
 
-	["Crowbar"] 				= BaseWars.GSL{Gun = true, Model = "models/weapons/w_crowbar.mdl", Price = 1000, ClassName = "weapon_crowbar"},
+--[[
+	
+	PRINTERS  PRINTERS  PRINTERS  PRINTERS  PRINTERS  PRINTERS  PRINTERS  PRINTERS  PRINTERS  PRINTERS
 
-	["Glock"] 						= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_glock20.mdl", Price = 5000, ClassName = "arccw_mifl_fas2_g20"},
-	["M1911"] 					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_m1911.mdl", Price = 5000, ClassName = "arccw_mifl_fas2_m1911"},
-	["P226"] 			= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl_atts/fas2/c_p226.mdl", Price = 5000, ClassName = "arccw_mifl_fas2_p226"},
+]]
 
-	["Deagle"] 					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_deagle.mdl", Price = 10000, ClassName = "arccw_mifl_fas2_deagle"},
-	["Raging Bull"] 						= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_ragingbull.mdl", Price = 11500, ClassName = "arccw_mifl_fas2_ragingbull"},
+BaseWars.SpawnList.Printers["A) Printers (T0)"] = {
 
-	["MP5"] 						= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_mp5.mdl", Price = 20000, ClassName = "arccw_mifl_fas2_mp5"},
-	["MAC11"] 					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_mac11.mdl", Price = 20000, ClassName = "arccw_mifl_fas2_mac11"},
-
-	["SG552"] 					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_sg552.mdl", Price = 25000, ClassName = "arccw_mifl_fas2_sg55x"},
-	["RPK"] 					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_rpk.mdl", Price = 25000, ClassName = "arccw_mifl_fas2_rpk"},
-	["G36"] 						= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_g36c.mdl", Price = 25000, ClassName = "arccw_mifl_fas2_g36c"},
-
-	["AKM"] 						= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_ak47.mdl", Price = 30000, ClassName = "arccw_mifl_fas2_ak47"},
-	["AR15"] 						= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_m4a1.mdl", Price = 30000, ClassName = "arccw_mifl_fas2_m4a1"},
-	["Famas"] 						= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_famas.mdl", Price = 32500, ClassName = "arccw_mifl_fas2_famas"},
-
-	["TOZ34"]					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_toz34.mdl", Price = 35000, ClassName = "arccw_mifl_fas2_toz34"},
-
-	["G3A3"] 						= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_g3.mdl", Price = 90000, ClassName = "arccw_mifl_fas2_g3"},
-	["M24"] 						= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_m24.mdl", Price = 100000, ClassName = "arccw_mifl_fas2_m24"},
-	["M82"] 						= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_m82.mdl", Price = 125000, ClassName = "arccw_mifl_fas2_m82"},
-
-
-}
-
-BaseWars.SpawnList.Loadout["Ammo Kits"] = {
-    ["SMG ammo"]        = BaseWars.GSL{Ammo = true, Model = "models/items/arccw/smg_ammo.mdl", Price = 5000, ClassName = "arccw_ammo_smg1"},
-    ["Shotgun ammo"]    = BaseWars.GSL{Ammo = true, Model = "models/items/arccw/shotgun_ammo.mdl", Price = 5000, ClassName = "arccw_ammo_buckshot"},
-    ["Pulse ammo"]    = BaseWars.GSL{Ammo = true, Model = "models/items/arccw/rifle_ammo.mdl", Price = 5000, ClassName = "arccw_ammo_ar2"},
-    ["357 ammo"]    = BaseWars.GSL{Ammo = true, Model = "models/items/arccw/magnum_ammo.mdl", Price = 5000, ClassName = "arccw_ammo_357"},
-    ["Pistol ammo"]    = BaseWars.GSL{Ammo = true, Model = "models/items/arccw/pistol_ammo.mdl", Price = 5000, ClassName = "arccw_ammo_pistol"},
-    ["Sniper ammo"]    = BaseWars.GSL{Ammo = true, Model = "models/items/arccw/sniper_ammo.mdl", Price = 5000, ClassName = "arccw_ammo_sniper"},
-}
-
-BaseWars.SpawnList.Loadout["Drugs"] = {
-
-	["DoubleJump"] 					= BaseWars.GSL{Drug = true, Price = 45000, ClassName = "DoubleJump"},
-	["Regen"] 						= BaseWars.GSL{Drug = true, Price = 45000, ClassName = "Regen"},
-	["PainKiller"] 					= BaseWars.GSL{Drug = true, Price = 45000, ClassName = "PainKiller"},
-	["Steroid"] 					= BaseWars.GSL{Drug = true, Price = 45000, ClassName = "Steroid"},
-	["Adrenaline"] 					= BaseWars.GSL{Drug = true, Price = 45000, ClassName = "Adrenaline"},
-	["Rage"] 						= BaseWars.GSL{Drug = true, Price = 45000, ClassName = "Rage"},
-	["Shield"] 						= BaseWars.GSL{Drug = true, Price = 45000, ClassName = "Shield"},
-	["Antidote"]					= BaseWars.GSL{Drug = true, Price = 5000, ClassName = "Antidote"},
-
-}
-
-BaseWars.SpawnList.Loadout["Medical"] = {
-
-	["Medkit"] 						= BaseWars.GSL{Model = "models/Items/HealthKit.mdl", Price = 15000, ClassName = "bw_medkit", Level = 5, IgnoreRaid = true},
-
-}
-
--- BaseWars.SpawnList.Loadout["Weapons (Grenades)"] = {
-
--- 	["Frag"]						= BaseWars.GSL{Gun = true, Model = "models/weapons/w_grenade.mdl", Price = 450000, ClassName = "cw_frag_grenade", Level = 20},
--- 	["Smoke"]						= BaseWars.GSL{Gun = true, Model = "models/weapons/w_eq_flashbang_thrown.mdl", Price = 450000, ClassName = "cw_smoke_grenade", Level = 20},
--- 	["Flash"]						= BaseWars.GSL{Gun = true, Model = "models/weapons/w_eq_flashbang_thrown.mdl", Price = 450000, ClassName = "cw_flash_grenade", Level = 20},
--- 	["Gas"]						= BaseWars.GSL{Gun = true, Model = "models/weapons/w_eq_flashbang_thrown.mdl", Price = 15000000, ClassName = "bw_gasnade", Level = 150},
-
--- }
-
-BaseWars.SpawnList.Loadout["Weapons (T2)"] = {
-
-	["SR25"]					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_sr25.mdl", Price = 550000, ClassName = "arccw_mifl_fas2_sr25", Level = 25},
-	["M249"]					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_minimi.mdl", Price = 800000, ClassName = "arccw_mifl_fas2_minimi", Level = 30},
-	["M3"] 							= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_870_1.mdl", Price = 550000, ClassName = "arccw_mifl_fas2_m3", Level = 25},
-	["KS23"]				= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_ks23.mdl", Price = 600000, ClassName = "arccw_mifl_fas2_ks23", Level = 25},
-	["Heal Gun"]					= BaseWars.GSL{Gun = true, Model = "models/weapons/w_physics.mdl", Price = 3500000, ClassName = "bw_health", Level = 45},
-
-}
-
-
-BaseWars.SpawnList.Loadout["Raid Tools"] = {
-
-	["Blowtorch"]		= BaseWars.GSL{Gun = true, Model = "models/weapons/w_irifle.mdl", Price = 45000, ClassName = "bw_blowtorch", Level = 5},
-	["C4"]					= BaseWars.GSL{Gun = true, Model = "models/weapons/w_c4.mdl", Price = 5500000, ClassName = "bw_weapon_c4", Level = 30},
-	["BigBomb"]			= BaseWars.GSL{Model = "models/props_c17/oildrum001.mdl", Price = 30*10^6, ClassName = "bw_explosive_bigbomb", Level = 50, Limit = 1, ShouldFreeze = false, Raid = true},
-	["Nuke"]				= BaseWars.GSL{Model = "models/props_phx/mk-82.mdl", Price = 100*10^6, ClassName = "bw_explosive_nuke", Level = 85, Limit = 1, ShouldFreeze = false, Raid = true},
-
-}
-
-BaseWars.SpawnList.Loadout["Vehicles"] = {
-
-	["Jeep"]				= BaseWars.GSL{Model = "models/buggy.mdl", Price = 2*10^10, ClassName = "prop_vehicle_jeep", VehicleName = "Jeep", Level = 1000},
-
-}
-
-BaseWars.SpawnList.Entities["Generators (T1)"] = {
-
-	["Gas Generator"]				= BaseWars.GSL{Model = "models/xqm/hydcontrolbox.mdl", Price = 500, ClassName = "bw_gen_gas"},
-	["Solar Panel"]					= BaseWars.GSL{Model = "models/props_lab/miniteleport.mdl", Price = 1500, ClassName = "bw_gen_solar", Level = 2},
-	["Coal Fired Generator"]		= BaseWars.GSL{Model = "models/props_wasteland/laundry_washer003.mdl", Price = 20000, ClassName = "bw_gen_coalfired", Level = 5},
-	["Fission Reactor"]				= BaseWars.GSL{Model = "models/props/de_nuke/equipment1.mdl", Price = 75000, ClassName = "bw_gen_fission", Level = 15},
-
-}
-
-BaseWars.SpawnList.Entities["Generators (T2)"] = {
-
-	["Hydro-Electric Generator"]		= BaseWars.GSL{Model = "models/props_industrial/oil_storage.mdl", Price = 5000000, ClassName = "bw_gen_hydro", Level = 50},
-	["Fusion Reactor"]				= BaseWars.GSL{Model = "models/props/de_train/pallet_barrels.mdl", Price = 15000000, ClassName = "bw_gen_fusion", Level = 75},
-
-}
-
-BaseWars.SpawnList.Entities["Generators (T3)"] = {
-
-	["Dark Fusion Reactor"]				= BaseWars.GSL{Model = "models/props/de_train/pallet_barrels.mdl", Price = 250000000, ClassName = "bw_gen_dark", Level = 125},
-	["Antimatter Generator"]			= BaseWars.GSL{Model = "models/props_combine/combine_light001b.mdl", Price = 15e9, ClassName = "bw_gen_antimatter", Level = 250},
-
-}
-
-BaseWars.SpawnList.Entities["Dispensers (T1)"] = {
-
-	["Vending Machine"]				= BaseWars.GSL{Model = "models/props_interiors/VendingMachineSoda01a.mdl", Price = 20000, ClassName = "bw_vendingmachine"},
-	["Ammo Dispenser"]				= BaseWars.GSL{Model = "models/props_lab/reciever_cart.mdl", Price = 155000, ClassName = "bw_dispenser_ammo"},
-	["Armour Dispenser"]			= BaseWars.GSL{Model = "models/props_combine/suit_charger001.mdl", Price = 35000, ClassName = "bw_dispenser_armor"},
-
-}
-
-BaseWars.SpawnList.Entities["Dispensers (T2)"] = {
-
-	["Printer-Paper Refiller"]		= BaseWars.GSL{Model = "models/props_lab/plotter.mdl", Price = 150000000, ClassName = "bw_dispenser_paper", Limit = 1, Level = 100},
-	["HealthPad"]					= BaseWars.GSL{Model = "models/props_lab/teleplatform.mdl", Price = 45000000, ClassName = "bw_healthpad", UseSpawnFunc = true, level = 80},
-
-}
-
-BaseWars.SpawnList.Entities["Dispensers (T3)"] = {
-
-	["Ammo Dispenser v2"]				= BaseWars.GSL{Model = "models/props_lab/reciever_cart.mdl", Price = 4*10^8, ClassName = "bw_dispenser_ammo2", Level = 125},
-	["Armour Dispenser v2"]			= BaseWars.GSL{Model = "models/props_combine/suit_charger001.mdl", Price = 2*10^8, ClassName = "bw_dispenser_armor2", Level = 110},
-
-}
-
-
-BaseWars.SpawnList.Entities["Structures (T1)"] = {
-
-	-- T1
-	["Spawnpoint"]					= BaseWars.GSL{Model = "models/props_trainstation/trainstation_clock001.mdl", Price = 15000, ClassName = "bw_spawnpoint", UseSpawnFunc = true},
-	["Drug Lab"]					= BaseWars.GSL{Model = "models/props_lab/crematorcase.mdl", Price = 35000, ClassName = "bw_druglab"},
-
-}
-
-BaseWars.SpawnList.Entities["Structures (T2)"] = {
-
-	-- T2
-	["Radar"]						= BaseWars.GSL{Model = "models/props_rooftop/roof_dish001.mdl", Price = 25000000, ClassName = "bw_radar",  Limit = 1, Level = 35},
-
-}
-
-BaseWars.SpawnList.Defence["Defence (T1)"] = {
-
-	-- T1
-	["Explosive Mine"] 				= BaseWars.GSL{Model = "models/props_combine/combine_mine01.mdl", Price = 40000, ClassName = "bw_explosive_mine", Limit = 8, Level = 9, ShouldFreeze = false},
-	["Ballistic Turret"] 			= BaseWars.GSL{Model = "models/Combine_turrets/Floor_turret.mdl", Price = 85000, ClassName = "bw_turret_ballistic", Limit = 2, Level = 15},
-	["Laser Turret"] 					= BaseWars.GSL{Model = "models/Combine_turrets/Floor_turret.mdl", Price = 120000, ClassName = "bw_turret_laser", Limit = 1, Level = 18},
-
-}
-
-BaseWars.SpawnList.Defence["Defence (T2)"] = {
-
-	-- T2
-	["Fast Mine"] 				= BaseWars.GSL{Model = "models/props_combine/combine_mine01.mdl", Price = 80000, ClassName = "bw_explosive_mine_speed", Limit = 5, Level = 20, ShouldFreeze = false},
-	["Powerful Mine"] 			= BaseWars.GSL{Model = "models/props_combine/combine_mine01.mdl", Price = 150000, ClassName = "bw_explosive_mine_power", Limit = 5, Level = 25, ShouldFreeze = false},
-	["Shock Mine"] 			= BaseWars.GSL{Model = "models/props_combine/combine_mine01.mdl", Price = 250000, ClassName = "bw_explosive_mine_shock", Limit = 3, Level = 30, ShouldFreeze = false},
-	["Controllable Turret"] = BaseWars.GSL{Model = "models/props_combine/combine_barricade_short02a.mdl", Price = 750000, ClassName = "bw_turret_manual", Limit = 3, Level = 35},
-	["Rapid Laser Turret"] 			= BaseWars.GSL{Model = "models/Combine_turrets/Floor_turret.mdl", Price = 1100000, ClassName = "bw_turret_laser_rapid", Limit = 1, Level = 45},
-	["Tesla Coil"]					= BaseWars.GSL{Model = "models/props_c17/substation_transformer01d.mdl", Price = 65000000, ClassName = "bw_tesla", Limit = 1, Level = 65},
-
-}
-
-BaseWars.SpawnList.Entities["Consumables (T1)"] = {
-
-	["Repair Kit"]					= BaseWars.GSL{Model = "models/Items/car_battery01.mdl", Price = 30000, ClassName = "bw_repairkit", UseSpawnFunc = true},
-	["Armour Kit"]					= BaseWars.GSL{Model = "models/props_junk/cardboard_box004a.mdl", Price = 85000, ClassName = "bw_entityarmor", UseSpawnFunc = true},
-	["Capacity Kit"]				= BaseWars.GSL{Model = "models/props_junk/cardboard_box004a.mdl", Price = 100000, ClassName = "bw_printercap", UseSpawnFunc = true},
-	["Battery Kit"]					= BaseWars.GSL{Model = "models/props_junk/cardboard_box004a.mdl", Price = 40000, ClassName = "bw_battery", UseSpawnFunc = true},
-	["Printer Paper"]				= BaseWars.GSL{Model = "models/props_junk/garbage_newspaper001a.mdl", Price = 2000, ClassName = "bw_printerpaper", UseSpawnFunc = true},
-
-}
-
-BaseWars.SpawnList.Entities["Consumables (T2)"] = {
-
-	["Heavy Armour Kit"]					= BaseWars.GSL{Model = "models/props_junk/cardboard_box004a.mdl", Price = 8500000, ClassName = "bw_armor_heavy", UseSpawnFunc = true, Level = 75},
-	["Heavy Capacity Kit"]					= BaseWars.GSL{Model = "models/props_junk/cardboard_box004a.mdl", Price = 12500000, ClassName = "bw_cap_heavy", UseSpawnFunc = true, Level = 75},
-
-}
-
-
-BaseWars.SpawnList.Printers["Printers (T0)"] = {
-
-	["Wooden Printer"]				= BaseWars.GSL{Model = "models/props_junk/wood_crate001a.mdl", Price = 200, ClassName = "bw_printer_wooden"},
-	["Plastic Printer"]				= BaseWars.GSL{Model = "models/props_lab/partsbin01.mdl", Price = 500, ClassName = "bw_printer_plastic"},
-	["Scrap Metal Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01c.mdl", Price = 1000, ClassName = "bw_printer_scrap"},
+	-- T0
 	["Basic Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 2000, ClassName = "bw_base_moneyprinter"},
 
 	["T0 VIP Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 2001, ClassName = "bw_printer_vip0", VIP = true},
 
 }
 
-BaseWars.SpawnList.Printers["Printers (T1)"] = {
+BaseWars.SpawnList.Printers["B) Printers (T1)"] = {
 
 	-- T1
 	["Copper Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 12500, ClassName = "bw_printer_copper", Level = 3},
@@ -904,7 +720,7 @@ BaseWars.SpawnList.Printers["Printers (T1)"] = {
 
 }
 
-BaseWars.SpawnList.Printers["Printers (T2)"] = {
+BaseWars.SpawnList.Printers["C) Printers (T2)"] = {
 
 	-- T2
 	["Emerald Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 15000000, ClassName = "bw_printer_emerald", Level = 50},
@@ -918,7 +734,7 @@ BaseWars.SpawnList.Printers["Printers (T2)"] = {
 
 }
 
-BaseWars.SpawnList.Printers["Printers (T3)"] = {
+BaseWars.SpawnList.Printers["D) Printers (T3)"] = {
 
 	-- T3
 	["Technetium Printer"]    		= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 550000000, ClassName = "bw_printer_technetium", Level = 125},
@@ -932,7 +748,7 @@ BaseWars.SpawnList.Printers["Printers (T3)"] = {
 
 }
 
-BaseWars.SpawnList.Printers["Printers (T4)"] = {
+BaseWars.SpawnList.Printers["E) Printers (T4)"] = {
 
 	-- T4
 	["Mobius Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 13000000000, ClassName = "bw_printer_mobius", Level = 275},
@@ -946,27 +762,27 @@ BaseWars.SpawnList.Printers["Printers (T4)"] = {
 
 }
 
-BaseWars.SpawnList.Printers["Printers (T5)"] = {
+BaseWars.SpawnList.Printers["F) Printers (T5)"] = {
 
 	-- T5
-	["Brown Dwarf Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 200e9, ClassName = "bw_printer_browndwarf", Level = 450},
+	["Brown Dwarf Printer"]			= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 200e9, ClassName = "bw_printer_browndwarf", Level = 450},
 	["Red Dwarf Printer"]			= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 400e9, ClassName = "bw_printer_reddwarf", Level = 475},
 	["White Dwarf Printer"]			= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 520e9, ClassName = "bw_printer_whitedwarf", Level = 500},
 	["Red Giant Printer"]			= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 670e9, ClassName = "bw_printer_redgiant", Level = 550},
-	["Neutron Star Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 870e9, ClassName = "bw_printer_neutron", Level = 575},
-	["Black Hole Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 115e10, ClassName = "bw_printer_blackhole", Level = 600},
+	["Neutron Star Printer"]		= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 870e9, ClassName = "bw_printer_neutron", Level = 575},
+	["Black Hole Printer"]			= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 115e10, ClassName = "bw_printer_blackhole", Level = 600},
 
 	["T5 VIP Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 116e10, ClassName = "bw_printer_vip5", VIP = true},
 
 }
 
-BaseWars.SpawnList.Printers["Printers (T6)"] = {
+BaseWars.SpawnList.Printers["G) Printers (T6)"] = {
 
 	-- T6
-	["Einstein Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 570e10, ClassName = "bw_printer_einstein", Level = 650},
-	["Euler Printer"]			= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 750e10, ClassName = "bw_printer_euler", Level = 700},
-	["Newton Printer"]			= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 970e10, ClassName = "bw_printer_newton", Level = 750},
-	["Hawking Printer"]			= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 125e11, ClassName = "bw_printer_hawking", Level = 800},
+	["Einstein Printer"]			= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 570e10, ClassName = "bw_printer_einstein", Level = 650},
+	["Euler Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 750e10, ClassName = "bw_printer_euler", Level = 700},
+	["Newton Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 970e10, ClassName = "bw_printer_newton", Level = 750},
+	["Hawking Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 125e11, ClassName = "bw_printer_hawking", Level = 800},
 	["Tesla Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 160e11, ClassName = "bw_printer_tesla", Level = 900},
 	["Planck Printer"]				= BaseWars.GSL{Model = "models/props_lab/reciever01a.mdl", Price = 210e11, ClassName = "bw_printer_planck", Level = 1000},
 
@@ -974,14 +790,272 @@ BaseWars.SpawnList.Printers["Printers (T6)"] = {
 
 }
 
-BaseWars.SpawnList.Entities["Entertainment"] = {
+BaseWars.SpawnList.Printers["H) Money Vaults"] = {
 
-	["Canvas"] = BaseWars.GSL{Model = "models/hunter/plates/plate1x1.mdl", Price = 5e5, ClassName = "canvas", UseSpawnFunc = true},
-	["Big TV"] = BaseWars.GSL{Model = "models/gmod_tower/suitetv_large.mdl", Price = 1e6, ClassName = "mediaplayer_tv", UseSpawnFunc = true},
+	["T1 Money Vault"]				= BaseWars.GSL{Model = "models/props_c17/FurnitureDrawer001a.mdl", Price = 4e4, ClassName = "bw_vault", Limit = 1, Level = 5},
+	["T1 Money Vault (VIP)"]		= BaseWars.GSL{Model = "models/props_c17/FurnitureDrawer001a.mdl", Price = 40001, ClassName = "bw_vault_vip", Limit = 1, Level = 5, VIP = true},
+	["T2 Money Vault"]				= BaseWars.GSL{Model = "models/props/de_nuke/nuclearcontainerboxclosed.mdl", Price = 5e9, ClassName = "bw_vault_improved", Limit = 1, Level = 200},
 
 }
 
-BaseWars.SpawnList.Entities["Constructs"] = {
+
+
+--[[
+	
+	Consumables  Consumables  Consumables  Consumables  Consumables  Consumables  Consumables  Consumables  Consumables  Consumables
+
+]]
+
+
+BaseWars.SpawnList.Consumables["A) Consumables (T1)"] = {
+
+	["Repair Kit"]					= BaseWars.GSL{Model = "models/Items/car_battery01.mdl", Price = 30000, ClassName = "bw_repairkit", UseSpawnFunc = true},
+	["Armour Kit"]					= BaseWars.GSL{Model = "models/props_junk/cardboard_box004a.mdl", Price = 85000, ClassName = "bw_entityarmor", UseSpawnFunc = true},
+	["Capacity Kit"]				= BaseWars.GSL{Model = "models/props_junk/cardboard_box004a.mdl", Price = 100000, ClassName = "bw_printercap", UseSpawnFunc = true},
+	["Battery Kit"]					= BaseWars.GSL{Model = "models/props_junk/cardboard_box004a.mdl", Price = 40000, ClassName = "bw_battery", UseSpawnFunc = true},
+	["Printer Paper"]				= BaseWars.GSL{Model = "models/props_junk/garbage_newspaper001a.mdl", Price = 2000, ClassName = "bw_printerpaper", UseSpawnFunc = true},
+
+}
+
+BaseWars.SpawnList.Consumables["B) Consumables (T2)"] = {
+
+	["Heavy Armour Kit"]			= BaseWars.GSL{Model = "models/props_junk/cardboard_box004a.mdl", Price = 8500000, ClassName = "bw_armor_heavy", UseSpawnFunc = true, Level = 60},
+	["Heavy Capacity Kit"]			= BaseWars.GSL{Model = "models/props_junk/cardboard_box004a.mdl", Price = 12500000, ClassName = "bw_cap_heavy", UseSpawnFunc = true, Level = 60},
+
+}
+
+
+
+--[[
+	
+	Defence  Defence  Defence  Defence  Defence  Defence  Defence  Defence  Defence  Defence
+
+]]
+
+BaseWars.SpawnList.Defence["A) Defence (T1)"] = {
+
+	-- T1
+	["Explosive Mine"] 				= BaseWars.GSL{Model = "models/props_combine/combine_mine01.mdl", Price = 40000, ClassName = "bw_explosive_mine", Limit = 8, Level = 9, ShouldFreeze = false},
+	["Ballistic Turret"] 			= BaseWars.GSL{Model = "models/Combine_turrets/Floor_turret.mdl", Price = 85000, ClassName = "bw_turret_ballistic", Limit = 2, Level = 15},
+	["Laser Turret"] 				= BaseWars.GSL{Model = "models/Combine_turrets/Floor_turret.mdl", Price = 120000, ClassName = "bw_turret_laser", Limit = 1, Level = 18},
+
+}
+
+BaseWars.SpawnList.Defence["B) Defence (T2)"] = {
+
+	-- T2
+	["Fast Mine"] 					= BaseWars.GSL{Model = "models/props_combine/combine_mine01.mdl", Price = 80000, ClassName = "bw_explosive_mine_speed", Limit = 5, Level = 20, ShouldFreeze = false},
+	["Powerful Mine"] 				= BaseWars.GSL{Model = "models/props_combine/combine_mine01.mdl", Price = 150000, ClassName = "bw_explosive_mine_power", Limit = 5, Level = 25, ShouldFreeze = false},
+	["Shock Mine"] 					= BaseWars.GSL{Model = "models/props_combine/combine_mine01.mdl", Price = 250000, ClassName = "bw_explosive_mine_shock", Limit = 3, Level = 30, ShouldFreeze = false},
+	["Controllable Turret"] 		= BaseWars.GSL{Model = "models/props_combine/combine_barricade_short02a.mdl", Price = 750000, ClassName = "bw_turret_manual", Limit = 3, Level = 35},
+	["Rapid Laser Turret"] 			= BaseWars.GSL{Model = "models/Combine_turrets/Floor_turret.mdl", Price = 1100000, ClassName = "bw_turret_laser_rapid", Limit = 1, Level = 45},
+	["Tesla Coil"]					= BaseWars.GSL{Model = "models/props_c17/substation_transformer01d.mdl", Price = 65000000, ClassName = "bw_tesla", Limit = 1, Level = 65},
+
+}
+
+BaseWars.SpawnList.Defence["C) Defence (T3)"] = {
+
+	-- T3
+	["Healer Turret"] 				= BaseWars.GSL{Model = "models/props_c17/utilityconnecter006c.mdl", Price = 1e9, ClassName = "bw_turret_healer", Limit = 2, Level = 500, ShouldFreeze = true},
+	["Acid Turret"] 				= BaseWars.GSL{Model = "models/props_c17/utilityconnecter006c.mdl", Price = 1e9, ClassName = "bw_turret_acid", Limit = 2, Level = 500, ShouldFreeze = true},
+	["Freezer Turret"] 				= BaseWars.GSL{Model = "models/props_c17/utilityconnecter006c.mdl", Price = 1e9, ClassName = "bw_turret_freezer", Limit = 2, Level = 500, ShouldFreeze = true},
+
+}
+
+
+
+--[[
+	
+	Generators  Generators  Generators  Generators  Generators  Generators  Generators  Generators  Generators  Generators
+
+]]
+
+BaseWars.SpawnList.Generators["A) Generators (T1)"] = {
+
+	["Gas Generator"]				= BaseWars.GSL{Model = "models/xqm/hydcontrolbox.mdl", Price = 500, ClassName = "bw_gen_gas"},
+	["Solar Panel"]					= BaseWars.GSL{Model = "models/props_lab/miniteleport.mdl", Price = 1500, ClassName = "bw_gen_solar", Level = 2},
+	["Coal Fired Generator"]		= BaseWars.GSL{Model = "models/props_wasteland/laundry_washer003.mdl", Price = 20000, ClassName = "bw_gen_coalfired", Level = 5},
+	["Fission Reactor"]				= BaseWars.GSL{Model = "models/props/de_nuke/equipment1.mdl", Price = 75000, ClassName = "bw_gen_fission", Level = 15},
+
+}
+
+BaseWars.SpawnList.Generators["B) Generators (T2)"] = {
+
+	["Hydro-Electric Generator"]	= BaseWars.GSL{Model = "models/props_industrial/oil_storage.mdl", Price = 5000000, ClassName = "bw_gen_hydro", Level = 50},
+	["Fusion Reactor"]				= BaseWars.GSL{Model = "models/props/de_train/pallet_barrels.mdl", Price = 15000000, ClassName = "bw_gen_fusion", Level = 75},
+
+}
+
+BaseWars.SpawnList.Generators["C) Generators (T3)"] = {
+
+	["Dark Fusion Reactor"]			= BaseWars.GSL{Model = "models/props/de_train/pallet_barrels.mdl", Price = 250000000, ClassName = "bw_gen_dark", Level = 125},
+	["Antimatter Generator"]		= BaseWars.GSL{Model = "models/props_combine/combine_light001b.mdl", Price = 15e9, ClassName = "bw_gen_antimatter", Level = 250},
+
+}
+
+
+
+--[[
+	
+	Structures  Structures  Structures  Structures  Structures  Structures  Structures  Structures  Structures  Structures
+
+]]
+
+BaseWars.SpawnList.Structures["A) Dispensers (T1)"] = {
+
+	["Vending Machine"]				= BaseWars.GSL{Model = "models/props_interiors/VendingMachineSoda01a.mdl", Price = 20000, ClassName = "bw_vendingmachine"},
+	["Ammo Dispenser"]				= BaseWars.GSL{Model = "models/props_lab/reciever_cart.mdl", Price = 155000, ClassName = "bw_dispenser_ammo"},
+	["Armour Dispenser"]			= BaseWars.GSL{Model = "models/props_combine/suit_charger001.mdl", Price = 35000, ClassName = "bw_dispenser_armor"},
+
+}
+
+BaseWars.SpawnList.Structures["B) Dispensers (T2)"] = {
+
+	["Printer-Paper Refiller"]		= BaseWars.GSL{Model = "models/props_lab/plotter.mdl", Price = 150000000, ClassName = "bw_dispenser_paper", Limit = 1, Level = 100},
+	["HealthPad"]					= BaseWars.GSL{Model = "models/props_lab/teleplatform.mdl", Price = 45000000, ClassName = "bw_healthpad", UseSpawnFunc = true, level = 80},
+
+}
+
+BaseWars.SpawnList.Structures["C) Dispensers (T3)"] = {
+
+	["Ammo Dispenser v2"]			= BaseWars.GSL{Model = "models/props_lab/reciever_cart.mdl", Price = 4*10^8, ClassName = "bw_dispenser_ammo2", Level = 125},
+	["Armour Dispenser v2"]			= BaseWars.GSL{Model = "models/props_combine/suit_charger001.mdl", Price = 2*10^8, ClassName = "bw_dispenser_armor2", Level = 110},
+
+}
+
+
+BaseWars.SpawnList.Structures["D) Structures (T1)"] = {
+
+	-- T1
+	["Spawnpoint"]					= BaseWars.GSL{Model = "models/props_trainstation/trainstation_clock001.mdl", Price = 15000, ClassName = "bw_spawnpoint", UseSpawnFunc = true},
+	["Drug Lab"]					= BaseWars.GSL{Model = "models/props_lab/crematorcase.mdl", Price = 35000, ClassName = "bw_druglab"},
+
+}
+
+BaseWars.SpawnList.Structures["E) Structures (T2)"] = {
+
+	-- T2
+	["Radar"]						= BaseWars.GSL{Model = "models/props_rooftop/roof_dish001.mdl", Price = 25000000, ClassName = "bw_radar",  Limit = 1, Level = 35},
+
+}
+
+
+
+--[[
+	
+	Loadout  Loadout  Loadout  Loadout  Loadout  Loadout  Loadout  Loadout  Loadout  Loadout
+
+]]
+
+BaseWars.SpawnList.Loadout["A) Drugs"] = {
+
+	["DoubleJump"] 				= BaseWars.GSL{Drug = true, Price = 45000, ClassName = "DoubleJump"},
+	["Regen"] 					= BaseWars.GSL{Drug = true, Price = 45000, ClassName = "Regen"},
+	["PainKiller"] 				= BaseWars.GSL{Drug = true, Price = 45000, ClassName = "PainKiller"},
+	["Steroid"] 				= BaseWars.GSL{Drug = true, Price = 45000, ClassName = "Steroid"},
+	["Adrenaline"] 				= BaseWars.GSL{Drug = true, Price = 45000, ClassName = "Adrenaline"},
+	["Rage"] 					= BaseWars.GSL{Drug = true, Price = 45000, ClassName = "Rage"},
+	["Shield"] 					= BaseWars.GSL{Drug = true, Price = 45000, ClassName = "Shield"},
+	["Antidote"]				= BaseWars.GSL{Drug = true, Price = 5000, ClassName = "Antidote"},
+
+}
+
+BaseWars.SpawnList.Loadout["B) Medical"] = {
+
+	["Medkit"] 					= BaseWars.GSL{Model = "models/Items/HealthKit.mdl", Price = 15000, ClassName = "bw_medkit", Level = 5, IgnoreRaid = true},
+	["Medkit MK2"]              = BaseWars.GSL{Model = "models/Items/battery.mdl", Price = 150000, ClassName = "bw_medkitmk2", Level = 20, IgnoreRaid = true, Limit = 2},
+	["Heal Gun"]					= BaseWars.GSL{Gun = true, Model = "models/weapons/w_physics.mdl", Price = 1500000, ClassName = "bw_health", Level = 40},
+
+}
+
+BaseWars.SpawnList.Loadout["C) Ammo Kits"] = {
+
+    ["SMG ammo"]        		= BaseWars.GSL{Ammo = true, Model = "models/items/arccw/smg_ammo.mdl", Price = 5000, ClassName = "arccw_ammo_smg1"},
+    ["Shotgun ammo"]    		= BaseWars.GSL{Ammo = true, Model = "models/items/arccw/shotgun_ammo.mdl", Price = 5000, ClassName = "arccw_ammo_buckshot"},
+    ["Pulse ammo"]    			= BaseWars.GSL{Ammo = true, Model = "models/items/arccw/rifle_ammo.mdl", Price = 5000, ClassName = "arccw_ammo_ar2"},
+    ["357 ammo"]    			= BaseWars.GSL{Ammo = true, Model = "models/items/arccw/magnum_ammo.mdl", Price = 5000, ClassName = "arccw_ammo_357"},
+    ["Pistol ammo"]    			= BaseWars.GSL{Ammo = true, Model = "models/items/arccw/pistol_ammo.mdl", Price = 5000, ClassName = "arccw_ammo_pistol"},
+    ["Sniper ammo"]    			= BaseWars.GSL{Ammo = true, Model = "models/items/arccw/sniper_ammo.mdl", Price = 5000, ClassName = "arccw_ammo_sniper"},
+
+}
+
+BaseWars.SpawnList.Loadout["D) Weapons (T1)"] = {
+
+	["Crowbar"] 				= BaseWars.GSL{Gun = true, Model = "models/weapons/w_crowbar.mdl", Price = 1000, ClassName = "weapon_crowbar"},
+
+	["Glock"] 					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_glock20.mdl", Price = 5000, ClassName = "arccw_mifl_fas2_g20"},
+	["M1911"] 					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_m1911.mdl", Price = 5000, ClassName = "arccw_mifl_fas2_m1911"},
+	["P226"] 					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl_atts/fas2/c_p226.mdl", Price = 5000, ClassName = "arccw_mifl_fas2_p226"},
+
+	["Deagle"] 					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_deagle.mdl", Price = 10000, ClassName = "arccw_mifl_fas2_deagle"},
+	["Raging Bull"] 				= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_ragingbull.mdl", Price = 11500, ClassName = "arccw_mifl_fas2_ragingbull"},
+
+	["MP5"] 					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_mp5.mdl", Price = 20000, ClassName = "arccw_mifl_fas2_mp5"},
+	["MAC11"] 					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_mac11.mdl", Price = 20000, ClassName = "arccw_mifl_fas2_mac11"},
+
+	["SG552"] 					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_sg552.mdl", Price = 25000, ClassName = "arccw_mifl_fas2_sg55x"},
+	["RPK"] 					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_rpk.mdl", Price = 25000, ClassName = "arccw_mifl_fas2_rpk"},
+	["G36"] 					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_g36c.mdl", Price = 25000, ClassName = "arccw_mifl_fas2_g36c"},
+
+	["AKM"] 					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_ak47.mdl", Price = 30000, ClassName = "arccw_mifl_fas2_ak47"},
+	["AR15"] 					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_m4a1.mdl", Price = 30000, ClassName = "arccw_mifl_fas2_m4a1"},
+	["Famas"] 					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_famas.mdl", Price = 32500, ClassName = "arccw_mifl_fas2_famas"},
+
+	["TOZ34"]					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_toz34.mdl", Price = 35000, ClassName = "arccw_mifl_fas2_toz34"},
+
+	["G3A3"] 					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_g3.mdl", Price = 90000, ClassName = "arccw_mifl_fas2_g3"},
+	["M24"] 					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_m24.mdl", Price = 100000, ClassName = "arccw_mifl_fas2_m24"},
+	["M82"] 					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_m82.mdl", Price = 125000, ClassName = "arccw_mifl_fas2_m82"},
+
+}
+
+BaseWars.SpawnList.Loadout["E) Weapons (T2)"] = {
+
+	["SR25"]					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_sr25.mdl", Price = 550000, ClassName = "arccw_mifl_fas2_sr25", Level = 25},
+	["M249"]					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_minimi.mdl", Price = 800000, ClassName = "arccw_mifl_fas2_minimi", Level = 30},
+	["M3"] 						= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_870_1.mdl", Price = 550000, ClassName = "arccw_mifl_fas2_m3", Level = 25},
+	["KS23"]					= BaseWars.GSL{Gun = true, Model = "models/weapons/arccw/mifl/fas2/c_ks23.mdl", Price = 600000, ClassName = "arccw_mifl_fas2_ks23", Level = 25},
+	["Heal Gun"]				= BaseWars.GSL{Gun = true, Model = "models/weapons/w_physics.mdl", Price = 3500000, ClassName = "bw_health", Level = 45},
+
+}
+
+
+
+--[[
+	
+	Raiding  Raiding  Raiding  Raiding  Raiding  Raiding  Raiding  Raiding  Raiding  Raiding
+
+]]
+
+BaseWars.SpawnList.Raiding["A) Raid Tools"] = {
+
+	["Blowtorch"]				= BaseWars.GSL{Gun = true, Model = "models/weapons/w_irifle.mdl", Price = 45000, ClassName = "bw_blowtorch", Level = 5},
+	["C4"]						= BaseWars.GSL{Gun = true, Model = "models/weapons/w_c4.mdl", Price = 5500000, ClassName = "bw_weapon_c4", Level = 30},
+
+}
+
+BaseWars.SpawnList.Raiding["B) High-End Explosives"] = {
+
+	["BigBomb"]					= BaseWars.GSL{Model = "models/props_c17/oildrum001.mdl", Price = 100000000, ClassName = "bw_explosive_bigbomb", Level = 50, Limit = 1, ShouldFreeze = false, Raid = true},
+	["Nuke"]					= BaseWars.GSL{Model = "models/props_phx/mk-82.mdl", Price = 1e10, ClassName = "bw_explosive_nuke", Level = 150, Limit = 1, ShouldFreeze = false, Raid = true},
+}
+
+BaseWars.SpawnList.Raiding["C) Counter-Raid Tools"] = {
+
+	["Defuse Kit"]				= BaseWars.GSL{Gun = true, Model = "models/weapons/w_defuser.mdl", Price = 100000, ClassName = "bw_defuse", Level = 7},
+
+}
+
+
+
+
+--[[
+	
+	EndGame  EndGame  EndGame  EndGame  EndGame  EndGame  EndGame  EndGame  EndGame  EndGame
+
+]]
+
+BaseWars.SpawnList.EndGame["A) Constructs"] = {
 
     ["Weapon Assembler"] = BaseWars.GSL{Model = "models/props_c17/substation_transformer01a.mdl", Price = 1e12, ClassName = "bw_weapon_assembler", Limit = 1},
     ["Assembler Pre-Charger"] = BaseWars.GSL{Model = "models/props_c17/substation_transformer01b.mdl", Price = 2e12, ClassName = "bw_weapon_assembler_precharger", Limit = 3},
@@ -991,8 +1065,16 @@ BaseWars.SpawnList.Entities["Constructs"] = {
 
 }
 
-BaseWars.SpawnList.Printers["Money Vaults (T0)"] = {
-	["T1 Money Vault"]					= BaseWars.GSL{Model = "models/props_c17/FurnitureDrawer001a.mdl", Price = 4e4, ClassName = "bw_vault", Limit = 1, Level = 5},
-	["T1 Money Vault (VIP)"]			= BaseWars.GSL{Model = "models/props_c17/FurnitureDrawer001a.mdl", Price = 40001, ClassName = "bw_vault_vip", Limit = 1, Level = 5, VIP = true},
-	["T2 Money Vault"]					= BaseWars.GSL{Model = "models/props/de_nuke/nuclearcontainerboxclosed.mdl", Price = 5e9, ClassName = "bw_vault_improved", Limit = 1, Level = 35},
+BaseWars.SpawnList.EndGame["B) Entertainment"] = {
+
+	["Canvas"] = BaseWars.GSL{Model = "models/hunter/plates/plate1x1.mdl", Price = 5e5, ClassName = "canvas", UseSpawnFunc = true, Level = 50},
+	["Small Screen (Media Player)"] = BaseWars.GSL{Model = "models/props_phx/rt_screen.mdl", Price = 1e6, ClassName = "mediaplayer_tv", Level = 400, ForceModel = true, Health = 256},
+	["Big Screen (Media Player)"]   = BaseWars.GSL{Model = "models/gmod_tower/suitetv_large.mdl", Price = 1e8, ClassName = "mediaplayer_tv", Level = 350, VIP = true, Health = 256},
+
+}
+
+BaseWars.SpawnList.EndGame["C) Vehicles"] = {
+
+	["Jeep"]				= BaseWars.GSL{Model = "models/buggy.mdl", Price = 2*10^10, ClassName = "prop_vehicle_jeep", VehicleName = "Jeep", Level = 1000},
+
 }

@@ -98,16 +98,6 @@ function ENT:ThinkFunc()
 		local entList   = {}
 		local n_entList = 0
 
-		if self:GetRadius() >= 1 then
-
-			self.Range = self:GetRadius()
-
-		else
-
-			self:SetRadius( self.Range )
-
-		end
-
 		for _, v in ipairs(ents.FindInSphere(self:GetPos(), self.Range)) do
 
 			if IsValid( v ) and self:customTest(v) and self:testTarget(v) then
@@ -180,17 +170,6 @@ do
 	function ENT:Init()
 		self:SetLevel(1)
 		self:SetMaterial(self.Material)
-
-		if self:GetRadius() >= 1 then
-
-			self.Range = self:GetRadius()
-
-		else
-
-			self:SetRadius( self.Range )
-
-		end
-
 	end
 end
 

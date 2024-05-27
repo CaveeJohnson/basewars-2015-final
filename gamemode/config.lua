@@ -38,8 +38,6 @@ BaseWars.Config = {
 	-- To further customize XP distribution see server/hooks.lua
 	XPMultiplier = 1.0,
 
-	-- Forums: Li
-	Forums 		= "http://hexahedron.pw/forum
 	Forums 		= "http://loading.catgirls.co/",
 	-- SteamGroup: Link to your steam group, accessed with /steam
 	SteamGroup 	= "http://loading.catgirls.co/",

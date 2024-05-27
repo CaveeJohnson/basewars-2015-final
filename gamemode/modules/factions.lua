@@ -183,6 +183,14 @@ function MODULE:Set(ply, value, password, force)
 
 	end
 
+	if IsValid(Faction.members[ply:SteamID()]) then
+
+		ply:Notify("What the fuck? You cannot join your own faction.", BASEWARS_NOTIFICATION_ERROR)
+
+		return
+
+	end
+
 	local Lead = ply:InFaction(nil, true)
 
 	if ply:InFaction() then

@@ -89,6 +89,8 @@ if SERVER then
 		local xp = ply:GetXP()
 		local starting = xp
 
+		local addedLevels = 0
+
 		while xp >= neededxp do
 			if ply:GetLevel() == BaseWars.Config.LevelSettings.MaxLevel then
 				ply:SetLevel( BaseWars.Config.LevelSettings.MaxLevel )
@@ -96,12 +98,14 @@ if SERVER then
 				return
 			end
 		
-			ply:AddLevel(1)
-
+			addedlevels = addedlevels + 1
 			xp = xp - neededxp
 			xp = ply:GetXP()
 		end
-		if xp ~= starting then ply:SetXP(xp) end
+		if xp ~= starting then
+			ply:AddLevel(addedlevels)
+			ply:SetXP(xp)
+		end
 
 	end
 	

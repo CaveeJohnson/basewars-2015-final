@@ -98,12 +98,12 @@ if SERVER then
 				return
 			end
 		
-			addedlevels = addedlevels + 1
+			addedLevels = addedLevels + 1
 			xp = xp - neededxp
 			xp = ply:GetXP()
 		end
 		if xp ~= starting then
-			ply:AddLevel(addedlevels)
+			ply:AddLevel(addedLevels)
 			ply:SetXP(xp)
 		end
 

@@ -8,7 +8,7 @@ ENT.Capacity 		= 18e12
 ENT.PrintInterval 	= 1
 ENT.PrintAmount		= 11e9
 
-ENT.PrintName = "Tesla Printer"
+ENT.PrintName = "Planck Printer"
 
 ENT.FontColor = Color(255, 0, 0)
 ENT.BackColor = Color(255, 255, 255)

@@ -103,7 +103,7 @@ function MODULE:CheckForNULL()
 
 		if not F1 or not F2 then
 
-			ErrorNoHalt("faction not valid", P1Faction, F1, P2Faction F2)
+			ErrorNoHalt("faction not valid", P1Faction, F1, P2Faction, F2)
 
 			return false
 

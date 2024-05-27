@@ -27,7 +27,7 @@ ENT.Sound =  "mvm/mvm_money_pickup.wav"
 ENT.ShieldMax = 1500
 ENT.ShieldRate = 2
 
-local UpgradeCost = {500000, 2500000, 12500000, 500000000, 0}
+local UpgradeCost = {5e9, 25e9, 125e9, 500e9, 0}
 
 function ENT:StableNetwork()
 	self:NetworkVar("Float", 2, "Money")

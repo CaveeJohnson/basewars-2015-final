@@ -63,7 +63,6 @@ function ENT:DetonateEffects()
 	self:NukeEffects()
 end
 
-local ent = ENT
 local base_color = Color(255, 0, 0)
 
 local function draw_double_sphere(v, mult, alpha)
@@ -78,10 +77,10 @@ function ENT.PostDrawTranslucentRenderables(d, s)
 	if s then return end
 	if not LocalPlayer():InRaid() then return end
 
-	for _, v in ipairs(ents.FindByClass(ent.ClassName)) do
+	for _, v in ipairs(ents.FindByClass("bw_explode_nuke")) do
 		render.SetColorMaterial()
 		draw_double_sphere(v, 0.25, 20)
 		draw_double_sphere(v, 1.00, 00)
 	end
 end
-hook.Add("PostDrawTranslucentRenderables", ENT.ClassName, ENT.PostDrawTranslucentRenderables)
+hook.Add("PostDrawTranslucentRenderables", "bw_explode_nuke", ENT.PostDrawTranslucentRenderables)

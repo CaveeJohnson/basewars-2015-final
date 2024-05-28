@@ -40,10 +40,10 @@ function ENT.PostDrawTranslucentRenderables(d, s)
 	if s then return end
 	if not LocalPlayer():InRaid() then return end
 
-	for _, v in ipairs(ents.FindByClass("bw_explode_bigbomb")) do
+	for _, v in ipairs(ents.FindByClass("bw_explosive_bigbomb")) do
 		render.SetColorMaterial()
 		draw_double_sphere(v, 0.25, 20)
 		draw_double_sphere(v, 1.00, 00)
 	end
 end
-hook.Add("PostDrawTranslucentRenderables", "bw_explode_bigbomb", ENT.PostDrawTranslucentRenderables)
+hook.Add("PostDrawTranslucentRenderables", "bw_explosive_bigbomb", ENT.PostDrawTranslucentRenderables)

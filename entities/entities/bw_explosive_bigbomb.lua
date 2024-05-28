@@ -31,9 +31,9 @@ local base_color = Color(255, 0, 0)
 local function draw_double_sphere(v, mult, alpha)
 	alpha = math.max(0, alpha - (math.sin(CurTime()) + 1) * alpha) + 10
 	base_color.a = alpha
-	render.DrawSphere(v:GetPos(),  ent.ExplodeRadius * mult, 25, 25, base_color)
+	render.DrawSphere(v:GetPos(),  v.ExplodeRadius * mult, 25, 25, base_color)
 	base_color.a = alpha + 30
-	render.DrawSphere(v:GetPos(), -ent.ExplodeRadius * mult, 25, 25, base_color)
+	render.DrawSphere(v:GetPos(), -v.ExplodeRadius * mult, 25, 25, base_color)
 end
 
 function ENT.PostDrawTranslucentRenderables(d, s)

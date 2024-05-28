@@ -34,7 +34,7 @@ if SERVER then
 		if not (CurTime() > PlayTime.LastThink) then return end
 		PlayTime.LastThink = CurTime() + 1
 
-		for _, ply in next, player.GetAll() do
+		for _, ply in ipairs(player.GetAll()) do
 			ply:SetNW2String("SessionTime", tostring(ply:GetSessionTime()))
 			ply:SetNW2String("GlobalTime", tostring(ply:GetPlayTime()))
 		end
@@ -54,7 +54,7 @@ if SERVER then
 	end)
 
 	hook.Add("ShutDown", "PlayTime.ShutDown", function()
-		for _, ply, next in pairs( player.GetAll() ) do
+		for _, ply in ipairs( player.GetAll() ) do
 			PlayTime:SetGlobalTimeFile(ply, (tonumber(ply:GetNWString(tag)) or 0) + ply:GetSessionTime())
 		end
 	end)

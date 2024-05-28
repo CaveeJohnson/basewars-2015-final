@@ -25,3 +25,27 @@ end
 ENT.Cluster = true
 ENT.ClusterAmt = 7
 ENT.ClusterClass = "bw_explosive_bigbomb_fragment"
+
+
+local ent = ENT
+local base_color = Color(255, 0, 0)
+
+local function draw_double_sphere(v, mult, alpha)
+	alpha = math.max(0, alpha - (math.sin(CurTime()) + 1) * alpha) + 10
+	base_color.a = alpha
+	render.DrawSphere(v:GetPos(),  ent.ExplodeRadius * mult, 25, 25, base_color)
+	base_color.a = alpha + 30
+	render.DrawSphere(v:GetPos(), -ent.ExplodeRadius * mult, 25, 25, base_color)
+end
+
+function ENT.PostDrawTranslucentRenderables(d, s)
+	if s then return end
+	if not LocalPlayer():InRaid() then return end
+
+	for _, v in ipairs(ents.FindByClass(ent.ClassName)) do
+		render.SetColorMaterial()
+		draw_double_sphere(v, 0.25, 20)
+		draw_double_sphere(v, 1.00, 00)
+	end
+end
+hook.Add("PostDrawTranslucentRenderables", ENT.ClassName, ENT.PostDrawTranslucentRenderables)

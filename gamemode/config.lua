@@ -1079,7 +1079,7 @@ BaseWars.SpawnList.EndGame["C) Vehicles"] = {
 
 BaseWars.SpawnList.EndGame["D) Meth Lab"] = {
 
-	["Tent"]				= BaseWars.GSL{Model = "models/zerochain/props_methlab/zmlab2_tentkit.mdl", Price = 1e12, ClassName = "zmlab2_tent", Level = 500, Health = 256},
-	["Equipment"]			= BaseWars.GSL{Model = "models/zerochain/props_methlab/zmlab2_chest.mdl", Price = 1e12, ClassName = "zmlab2_equipment", Level = 500, Health = 256},
+	["Tent"]				= BaseWars.GSL{Model = "models/zerochain/props_methlab/zmlab2_tentkit.mdl", Price = 1e6, ClassName = "zmlab2_tent", Level = 20, Health = 256},
+	["Equipment"]			= BaseWars.GSL{Model = "models/zerochain/props_methlab/zmlab2_chest.mdl", Price = 1e6, ClassName = "zmlab2_equipment", Level = 20, Health = 256},
 
 }

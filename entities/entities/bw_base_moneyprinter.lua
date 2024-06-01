@@ -198,216 +198,153 @@ else
 		weight = 800,
 	})
 
-	local fontNameHuge = fontName .. ".Huge"
-	surface.CreateFont(fontNameHuge, {
+	surface.CreateFont(fontName .. ".Huge", {
 		font = "Roboto",
 		size = 64,
 		weight = 800,
 	})
 
-	local fontNameBig = fontName .. ".Big"
-	surface.CreateFont(fontNameBig, {
+	surface.CreateFont(fontName .. ".Big", {
 		font = "Roboto",
 		size = 32,
 		weight = 800,
 	})
 
-	local fontNameMedBig = fontName .. ".MedBig"
-	surface.CreateFont(fontNameMedBig, {
+	surface.CreateFont(fontName .. ".MedBig", {
 		font = "Roboto",
 		size = 24,
 		weight = 800,
 	})
 
-	local fontNameMed = fontName .. ".Med"
-	surface.CreateFont(fontNameMed, {
+	surface.CreateFont(fontName .. ".Med", {
 		font = "Roboto",
 		size = 18,
 		weight = 800,
 	})
 
-	do
-		local w, h = 216 * 2, 136 * 2
-		local color_red = Color(255,0,0)
-
-		local time_cache = {}
-		local function getTime(timeRemaining)
-			if not time_cache[timeRemaining] then
-				local PrettyHours = math.floor(timeRemaining/3600)
-				local PrettyMinutes = math.floor(timeRemaining/60) - PrettyHours*60
-				local PrettySeconds = timeRemaining - PrettyMinutes*60 - PrettyHours*3600
-				local PrettyTime =
-					(PrettyHours   > 0 and PrettyHours   .. BaseWars.LANG.HoursShort   or "")
-				..  (PrettyMinutes > 0 and PrettyMinutes .. BaseWars.LANG.MinutesShort or "")
-				..   PrettySeconds .. BaseWars.LANG.SecondsShort
-
-				local ret = string.format(BaseWars.LANG.UntilFull, PrettyTime)
-				time_cache[timeRemaining] = ret
-			end
-
-			return time_cache[timeRemaining]
-		end
-
-		local lv_cache = {}
-		local function getLv(Lv)
-			if not lv_cache[Lv] then
-				lv_cache[Lv] = string.format(BaseWars.LANG.LevelText, Lv):upper()
-			end
-
-			return lv_cache[Lv]
-		end
-
-		local font_heights = {}
-		local function fontHeight(font)
-			if not font_heights[font] then
-				font_heights[font] = draw.GetFontHeight(font)
-			end
-
-			return font_heights[font]
-		end
-
-		local function upgradeCache(self, Lv)
-			self._upgrade_cache = self._upgrade_cache or {}
-
-			if not self._upgrade_cache[Lv] then
-				local NextCost
-				if Lv >= self.MaxLevel then
-					NextCost = BaseWars.LANG.MaxLevel
-				else
-					NextCost = string.format(BaseWars.LANG.CURFORMER, BaseWars.NumberFormat(Lv * self:GetNWInt("UpgradeCost")))
-				end
-
-				self._upgrade_cache[Lv] = string.format(BaseWars.LANG.NextUpgrade, NextCost)
-			end
-
-			return self._upgrade_cache[Lv]
-		end
-
-		local surface_SetDrawColor = surface.SetDrawColor
-		local surface_DrawRect = surface.DrawRect
-		local draw_DrawText = draw.DrawText
-		local surface_DrawLine = surface.DrawLine
-		local math_Round = math.Round
-		local math_floor = math.floor
-		local surface_GetTextSize = surface.GetTextSize
-		local string_format = string.format
-		local math_huge = math.huge
-
-		local sep = " / "
-		local StrW_sep, StrH_sep = surface.GetTextSize(sep)
-
+	local WasPowered
+	if CLIENT then
 		function ENT:DrawDisplay(pos, ang, scale)
-			local BackColor = self.BackColor
-			local FontColor = self.FontColor
-
+			local w, h = 216 * 2, 136 * 2
+			local disabled = self:GetNWBool("printer_disabled")
 			local Pw = self:IsPowered()
-			surface_SetDrawColor(Pw and BackColor or color_black)
-			surface_DrawRect(0, 0, w, h)
+			local Lv = self:GetLevel()
+			local Cp = self:GetCapacity()
+
+			draw.RoundedBox(4, 0, 0, w, h, Pw and self.BackColor or color_black)
 
 			if not Pw then return end
 
-			local disabled = self:GetNWBool("printer_disabled")
 			if disabled then
-				draw_DrawText(BaseWars.LANG.PrinterBeen, fontName, w / 2, h / 2 - 48, FontColor, TEXT_ALIGN_CENTER)
-				draw_DrawText(BaseWars.LANG.Disabled, fontNameHuge, w / 2, h / 2 - 32, color_red, TEXT_ALIGN_CENTER)
+				draw.DrawText(BaseWars.LANG.PrinterBeen, fontName, w / 2, h / 2 - 48, self.FontColor, TEXT_ALIGN_CENTER)
+				draw.DrawText(BaseWars.LANG.Disabled, fontName .. ".Huge", w / 2, h / 2 - 32, Color(255,0,0), TEXT_ALIGN_CENTER)
 			return end
-			draw_DrawText(self.PrintName, fontName, w / 2, 4, FontColor, TEXT_ALIGN_CENTER)
+			draw.DrawText(self.PrintName, fontName, w / 2, 4, self.FontColor, TEXT_ALIGN_CENTER)
 
 			if disabled then return end
 
-			local Lv = self:GetLevel()
-
 			--Level
-			surface_SetDrawColor(FontColor)
-			surface_DrawLine(0, 30, w, 30)--draw.RoundedBox(0, 0, 30, w, 1, self.FontColor)
-			draw_DrawText(getLv(Lv), fontNameBig, 4, 32, FontColor, TEXT_ALIGN_LEFT)
-			surface_DrawLine(0, 68, w, 68)--draw.RoundedBox(0, 0, 68, w, 1, self.FontColor)
+			surface.SetDrawColor(self.FontColor)
+			surface.DrawLine(0, 30, w, 30)--draw.RoundedBox(0, 0, 30, w, 1, self.FontColor)
+			draw.DrawText(string.format(BaseWars.LANG.LevelText, Lv):upper(), fontName .. ".Big", 4, 32, self.FontColor, TEXT_ALIGN_LEFT)
+			surface.DrawLine(0, 68, w, 68)--draw.RoundedBox(0, 0, 68, w, 1, self.FontColor)
 
-			draw_DrawText(BaseWars.LANG.Cash, fontNameBig, 4, 72, FontColor, TEXT_ALIGN_LEFT)
-			-- draw.RoundedBox(0, 0, 72 + 32, w, 1, self.FontColor)
+			draw.DrawText(BaseWars.LANG.Cash, fontName .. ".Big", 4, 72, self.FontColor, TEXT_ALIGN_LEFT)
+--			draw.RoundedBox(0, 0, 72 + 32, w, 1, self.FontColor)
 
 			local money = self:GetMoney() or 0
-			local cap = tonumber(self:GetCapacity()) or 0
+			local cap = tonumber(Cp) or 0
 
-			local moneyPercentage = math_Round(money / cap * 100, 1)
+			local moneyPercentage = math.Round( money / cap * 100 ,1)
 			--Percentage done
-			draw_DrawText(moneyPercentage .."%" , fontNameBig,	w - 4, 71, FontColor, TEXT_ALIGN_RIGHT)
+			draw.DrawText( moneyPercentage .."%" , fontName .. ".Big",	w - 4, 71, self.FontColor, TEXT_ALIGN_RIGHT)
 
 			--Money/Maxmoney
-			local currentMoney = string_format(BaseWars.LANG.CURFORMER, BaseWars.NumberFormat(money))
-			local maxMoney = string_format(BaseWars.LANG.CURFORMER, BaseWars.NumberFormat(cap))
-			local font = fontNameBig
+			local currentMoney = string.format(BaseWars.LANG.CURFORMER, BaseWars.NumberFormat(money))
+			local maxMoney = string.format(BaseWars.LANG.CURFORMER, BaseWars.NumberFormat(cap))
+			local font = fontName .. ".Big"
 
-			local money_length = #currentMoney
-			if money_length > 20 then
-				font = fontNameMed
-			elseif money_length > 16 then
-				font = fontNameMedBig
+			if #currentMoney > 16 then
+				font = fontName .. ".MedBig"
 			end
 
-			local fh = fontHeight(font)
+			if #currentMoney > 20 then
+				font = fontName .. ".Med"
+			end
 
-			local StrW, StrH = StrW_sep, StrH_sep
-			draw_DrawText(sep, font,
-				w/2 - StrW/2 , (font == fontNameBig and 106 or 105 + fh / 4), FontColor, TEXT_ALIGN_LEFT)
+			local fh = draw.GetFontHeight(font)
 
-			local moneyW, moneyH = surface_GetTextSize(currentMoney)
-			draw_DrawText(currentMoney , font,
-				w/2 - StrW/2 - moneyW , (font == fontNameBig and 106 or 105 + fh / 4), FontColor, TEXT_ALIGN_LEFT)
+			local StrW,StrH = surface.GetTextSize(" / ")
+			draw.DrawText(" / " , font,
+				w/2 - StrW/2 , (font == fontName .. ".Big" and 106 or 105 + fh / 4), self.FontColor, TEXT_ALIGN_LEFT)
 
-			draw_DrawText(maxMoney, font,
-				w/2 + StrW/2 , (font == fontNameBig and 106 or 105 + fh / 4), FontColor, nil)
+			local moneyW,moneyH = surface.GetTextSize(currentMoney)
+			draw.DrawText(currentMoney , font,
+				w/2 - StrW/2 - moneyW , (font == fontName .. ".Big" and 106 or 105 + fh / 4), self.FontColor, TEXT_ALIGN_LEFT)
+
+			draw.DrawText( maxMoney, font,
+				w/2 + StrW/2 , (font == fontName .. ".Big" and 106 or 105 + fh / 4), self.FontColor, TEXT_ALIGN_Right)
 
 			--Paper
 			local paper = math.floor(self:GetPaper())
-			draw_DrawText(string_format(BaseWars.LANG.Paper, paper), fontNameMedBig, 4, 94 + 49, FontColor, TEXT_ALIGN_LEFT)
+			draw.DrawText(string.format(BaseWars.LANG.Paper, paper), fontName .. ".MedBig", 4, 94 + 49, self.FontColor, TEXT_ALIGN_LEFT)
 			--draw.RoundedBox(0, 0, 102 + 37, w, 1, self.FontColor)
-			surface_DrawLine(0, 102 + 37, w, 102 + 37)
+			surface.DrawLine(0, 102 + 37, w, 102 + 37)
 
-			surface_DrawLine(0, 142 + 25, w, 142 + 25)--draw.RoundedBox(0, 0, 142 + 25, w, 1, self.FontColor)
-			draw_DrawText(upgradeCache(self, Lv), fontNameMedBig, 4, 84 + 78 + 10, FontColor, TEXT_ALIGN_LEFT)
-			surface_DrawLine(0, 142 + 25, w, 142 + 25)--draw.RoundedBox(0, 0, 142 + 55, w, 1, self.FontColor)
+			local NextCost = string.format(BaseWars.LANG.CURFORMER, BaseWars.NumberFormat(self:GetLevel() * self:GetNWInt("UpgradeCost")))
+
+			if self:GetLevel() >= self.MaxLevel then
+				NextCost = BaseWars.LANG.MaxLevel
+			end
+
+			surface.DrawLine(0, 142 + 25, w, 142 + 25)--draw.RoundedBox(0, 0, 142 + 25, w, 1, self.FontColor)
+			draw.DrawText(string.format(BaseWars.LANG.NextUpgrade, NextCost), fontName .. ".MedBig", 4, 84 + 78 + 10, self.FontColor, TEXT_ALIGN_LEFT)
+			surface.DrawLine(0, 142 + 25, w, 142 + 25)--draw.RoundedBox(0, 0, 142 + 55, w, 1, self.FontColor)
 
 			--Time remaining counter
 			local timeRemaining = 0
-			local moneyRatio = money / cap
-			local roomInPrinter = cap - money
-			timeRemaining = math_Round(roomInPrinter / (self.PrintAmount * Lv / self.PrintInterval))
-			
+			timeRemaining = math.Round( (cap - money) / (self.PrintAmount * Lv / self.PrintInterval) )
+
 			if timeRemaining > 0 then
-				draw_DrawText(getTime(timeRemaining), fontNameBig, w-4 , 32, FontColor, TEXT_ALIGN_RIGHT)
+				local PrettyHours = math.floor(timeRemaining/3600)
+				local PrettyMinutes = math.floor(timeRemaining/60) - PrettyHours*60
+				local PrettySeconds = timeRemaining - PrettyMinutes*60 - PrettyHours*3600
+				local PrettyTime = (PrettyHours > 0 and PrettyHours..BaseWars.LANG.HoursShort or "") ..
+				(PrettyMinutes > 0 and PrettyMinutes..BaseWars.LANG.MinutesShort or "") ..
+				PrettySeconds..BaseWars.LANG.SecondsShort
+
+				draw.DrawText(string.format(BaseWars.LANG.UntilFull, PrettyTime), fontName .. ".Big", w-4 , 32, self.FontColor, TEXT_ALIGN_RIGHT)
 			else
-				draw_DrawText(BaseWars.LANG.Full, fontNameBig, w-4 , 32, FontColor, TEXT_ALIGN_RIGHT)
+				draw.DrawText(BaseWars.LANG.Full, fontName .. ".Big", w-4 , 32, self.FontColor, TEXT_ALIGN_RIGHT)
 			end
 
 			--Money bar BG
 			local BoxX = 88
 			local BoxW = 265
-			surface_SetDrawColor(FontColor)
-			surface_DrawRect(BoxX, 74, BoxW , 24)
+			draw.RoundedBox(0, BoxX, 74, BoxW , 24, self.FontColor)
 
 			--Money bar gap
-			if cap > 0 and cap ~= math_huge and moneyRatio < 0.99999 then 
-				local maxWidth = math_floor(BoxW - 6)
-				local curWidth = maxWidth * (1 - moneyRatio)
+			if cap > 0 and cap ~= math.huge then
+				local moneyRatio = money / cap
+				local maxWidth = math.floor(BoxW - 6)
+				local curWidth = maxWidth * (1-moneyRatio)
 
-				surface_SetDrawColor(BackColor)
-				surface_DrawRect(w - BoxX - curWidth + 6 , 76, curWidth , 24 - 4)
+				draw.RoundedBox(0, w - BoxX - curWidth + 6 , 76, curWidth , 24 - 4, self.BackColor)
 			end
 		end
-	end
 
-	function ENT:Calc3D2DParams()
-		local pos = self:GetPos()
-		local ang = self:GetAngles()
+		function ENT:Calc3D2DParams()
+			local pos = self:GetPos()
+			local ang = self:GetAngles()
 
-		pos = pos + ang:Up() * 3.09
-		pos = pos + ang:Forward() * -7.35
-		pos = pos + ang:Right() * 10.82
+			pos = pos + ang:Up() * 3.09
+			pos = pos + ang:Forward() * -7.35
+			pos = pos + ang:Right() * 10.82
 
-		ang:RotateAroundAxis(ang:Up(), 90)
+			ang:RotateAroundAxis(ang:Up(), 90)
 
-		return pos, ang, 0.1 / 2
+			return pos, ang, 0.1 / 2
+		end
 	end
 
 	function ENT:Draw()

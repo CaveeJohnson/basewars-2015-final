@@ -295,21 +295,20 @@ else
 			local maxMoney = string.format(BaseWars.LANG.CURFORMER, BaseWars.NumberFormat(cap))
 			local font = fontNameBig
 
-			if #currentMoney > 16 then
-				font = fontNameMedBig
-			end
-
-			if #currentMoney > 20 then
+			local money_length = #currentMoney
+			if money_length > 20 then
 				font = fontNameMed
+			elseif money_length > 16 then
+				font = fontNameMedBig
 			end
 
 			local fh = draw.GetFontHeight(font)
 
-			local StrW,StrH = surface.GetTextSize(" / ")
+			local StrW, StrH = surface.GetTextSize(" / ")
 			draw.DrawText(" / " , font,
 				w/2 - StrW/2 , (font == fontNameBig and 106 or 105 + fh / 4), self.FontColor, TEXT_ALIGN_LEFT)
 
-			local moneyW,moneyH = surface.GetTextSize(currentMoney)
+			local moneyW ,moneyH = surface.GetTextSize(currentMoney)
 			draw.DrawText(currentMoney , font,
 				w/2 - StrW/2 - moneyW , (font == fontNameBig and 106 or 105 + fh / 4), self.FontColor, TEXT_ALIGN_LEFT)
 
@@ -326,7 +325,7 @@ else
 			if Lv >= self.MaxLevel then
 				NextCost = BaseWars.LANG.MaxLevel
 			else
-				string.format(BaseWars.LANG.CURFORMER, BaseWars.NumberFormat(Lv * self:GetNWInt("UpgradeCost")))
+				NextCost = string.format(BaseWars.LANG.CURFORMER, BaseWars.NumberFormat(Lv * self:GetNWInt("UpgradeCost")))
 			end
 
 			surface.DrawLine(0, 142 + 25, w, 142 + 25)--draw.RoundedBox(0, 0, 142 + 25, w, 1, self.FontColor)
@@ -335,7 +334,8 @@ else
 
 			--Time remaining counter
 			local timeRemaining = 0
-			timeRemaining = math.Round( (cap - money) / (self.PrintAmount * Lv / self.PrintInterval) )
+			local moneyRatio = money / cap
+			timeRemaining = math.Round(moneyRatio / (self.PrintAmount * Lv / self.PrintInterval))
 
 			if timeRemaining > 0 then
 				draw.DrawText(getTime(timeRemaining), fontNameBig, w-4 , 32, self.FontColor, TEXT_ALIGN_RIGHT)
@@ -349,15 +349,11 @@ else
 			draw.RoundedBox(0, BoxX, 74, BoxW , 24, self.FontColor)
 
 			--Money bar gap
-			if cap > 0 and cap ~= math.huge then
-				local moneyRatio = money / cap
+			if cap > 0 and cap ~= math.huge and moneyRatio < 0.99999 then 
+				local maxWidth = math.floor(BoxW - 6)
+				local curWidth = maxWidth * (1 - moneyRatio)
 
-				if moneyRatio < 0.99999 then 
-					local maxWidth = math.floor(BoxW - 6)
-					local curWidth = maxWidth * (1-moneyRatio)
-
-					draw.RoundedBox(0, w - BoxX - curWidth + 6 , 76, curWidth , 24 - 4, self.BackColor)
-				end
+				draw.RoundedBox(0, w - BoxX - curWidth + 6 , 76, curWidth , 24 - 4, self.BackColor)
 			end
 		end
 	end

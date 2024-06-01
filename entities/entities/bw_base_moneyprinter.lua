@@ -314,7 +314,7 @@ else
 				w/2 - StrW/2 - moneyW , (font == fontNameBig and 106 or 105 + fh / 4), self.FontColor, TEXT_ALIGN_LEFT)
 
 			draw.DrawText( maxMoney, font,
-				w/2 + StrW/2 , (font == fontNameBig and 106 or 105 + fh / 4), self.FontColor, TEXT_ALIGN_RIGHT)
+				w/2 + StrW/2 , (font == fontNameBig and 106 or 105 + fh / 4), self.FontColor, nil)
 
 			--Paper
 			local paper = math.floor(self:GetPaper())

@@ -258,9 +258,9 @@ else
 		end
 
 		function ENT:DrawDisplay(pos, ang, scale)
+			local Pw = self:IsPowered()
 			draw.RoundedBox(4, 0, 0, w, h, Pw and self.BackColor or color_black)
 
-			local Pw = self:IsPowered()
 			if not Pw then return end
 
 			local disabled = self:GetNWBool("printer_disabled")

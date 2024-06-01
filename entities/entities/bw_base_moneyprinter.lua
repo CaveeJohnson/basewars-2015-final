@@ -335,6 +335,7 @@ else
 			--Time remaining counter
 			local timeRemaining = 0
 			local moneyRatio = money / cap
+			print("ratios", money, cap, moneyRatio)
 			timeRemaining = math.Round(moneyRatio / (self.PrintAmount * Lv / self.PrintInterval))
 
 			if timeRemaining > 0 then

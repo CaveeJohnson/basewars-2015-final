@@ -294,7 +294,7 @@ else
 		local math_huge = math.huge
 
 		local sep = " / "
-		local StrW_sep, StrH_sep = surface.GetTextSize()
+		local StrW_sep, StrH_sep = surface.GetTextSize(sep)
 
 		function ENT:DrawDisplay(pos, ang, scale)
 			local BackColor = self.BackColor

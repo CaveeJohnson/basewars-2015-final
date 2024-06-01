@@ -92,16 +92,21 @@ local function findPlayersInCone(cone_origin, cone_direction, cone_radius_sqr, c
 	local result = {}
 	local i = 0
 
-	for _, entity in ipairs(player.GetAll()) do
-		local pos = entity:GetPos()
-		local dir = pos - cone_origin
-		dir:Normalize()
+	local radius = math.sqrt(cone_radius_sqr)
 
-		local dot = cone_direction:Dot(dir)
+	for _, entity in ipairs(ents.FindInSphere(cone_origin, radius)) do
+		local entity_class = entity:GetClass()
+		if entity_class === "player" or entity_class:match("^npc_") then 
+			local pos = entity:GetPos()
+			local dir = pos - cone_origin
+			dir:Normalize()
 
-		if dot > cos and cone_origin:DistToSqr(pos) <= cone_radius_sqr then
-			i = i + 1
-			result[i] = entity
+			local dot = cone_direction:Dot(dir)
+
+			if dot > cos then -- and cone_origin:DistToSqr(pos) <= cone_radius_sqr then
+				i = i + 1
+				result[i] = entity
+			end
 		end
 	end
 
@@ -133,7 +138,7 @@ function ENT:ThinkFunc()
 	local closest, dist = nil, math.huge
 	for i = 1, count do
 		local v = find[i]
-		if Owner:IsEnemy(v) then
+		if not v:IsPlayer() or Owner:IsEnemy(v) then
 			local d = SelfPos:DistToSqr(v:GetPos())
 
 			if d < dist then

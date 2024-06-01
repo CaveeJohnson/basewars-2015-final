@@ -259,7 +259,8 @@ else
 
 		function ENT:DrawDisplay(pos, ang, scale)
 			local Pw = self:IsPowered()
-			draw.RoundedBox(4, 0, 0, w, h, Pw and self.BackColor or color_black)
+			surface.SetDrawColor(Pw and self.BackColor or color_black)
+			surface.DrawRect(0, 0, w, h)
 
 			if not Pw then return end
 
@@ -347,14 +348,16 @@ else
 			--Money bar BG
 			local BoxX = 88
 			local BoxW = 265
-			draw.RoundedBox(0, BoxX, 74, BoxW , 24, self.FontColor)
+			surface.SetDrawColor(self.FontColor)
+			surface.DrawRect(BoxX, 74, BoxW , 24)
 
 			--Money bar gap
 			if cap > 0 and cap ~= math.huge and moneyRatio < 0.99999 then 
 				local maxWidth = math.floor(BoxW - 6)
 				local curWidth = maxWidth * (1 - moneyRatio)
 
-				draw.RoundedBox(0, w - BoxX - curWidth + 6 , 76, curWidth , 24 - 4, self.BackColor)
+				surface.SetDrawColor(self.BackColor)
+				surface.DrawRect(w - BoxX - curWidth + 6 , 76, curWidth , 24 - 4)
 			end
 		end
 	end

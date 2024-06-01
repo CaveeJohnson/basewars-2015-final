@@ -96,7 +96,7 @@ local function findPlayersInCone(cone_origin, cone_direction, cone_radius_sqr, c
 
 	for _, entity in ipairs(ents.FindInSphere(cone_origin, radius)) do
 		local entity_class = entity:GetClass()
-		if entity_class === "player" or entity_class:match("^npc_") then 
+		if entity_class == "player" or entity_class:match("^npc_") then 
 			local pos = entity:GetPos()
 			local dir = pos - cone_origin
 			dir:Normalize()

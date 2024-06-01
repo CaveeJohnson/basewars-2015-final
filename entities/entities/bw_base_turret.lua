@@ -50,7 +50,7 @@ function ENT:SpawnBullet(target)
 		tr.endpos = Pos
 		tr.filter = function(ent)
 
-			if ent:IsPlayer() or ent:GetClass():find("prop_") then return true end
+			if ent:IsPlayer() or ent:IsNPC() or ent:GetClass():find("prop_") then return true end
 
 		end
 	tr = util.TraceLine(tr)
@@ -95,8 +95,8 @@ local function findPlayersInCone(cone_origin, cone_direction, cone_radius_sqr, c
 	local radius = math.sqrt(cone_radius_sqr)
 
 	for _, entity in ipairs(ents.FindInSphere(cone_origin, radius)) do
-		local entity_class = entity:GetClass()
-		if entity_class == "player" or entity_class:match("^npc_") then 
+		-- local entity_class = entity:GetClass()
+		if entity:IsPlayer() or entity:IsNPC() then 
 			local pos = entity:GetPos()
 			local dir = pos - cone_origin
 			dir:Normalize()
@@ -147,8 +147,6 @@ function ENT:ThinkFunc()
 			end
 		end
 	end
-	
-	print(closest)
 
 	if not closest then
 		return

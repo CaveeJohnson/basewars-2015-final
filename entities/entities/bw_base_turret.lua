@@ -106,6 +106,7 @@ local function findPlayersInCone(cone_origin, cone_direction, cone_radius_sqr, c
 			if dot > cos then -- and cone_origin:DistToSqr(pos) <= cone_radius_sqr then
 				i = i + 1
 				result[i] = entity
+				print("turret found", entity)
 			end
 		end
 	end

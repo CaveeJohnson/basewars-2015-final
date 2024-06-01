@@ -335,14 +335,14 @@ else
 			--Time remaining counter
 			local timeRemaining = 0
 			local moneyRatio = money / cap
-			timeRemaining = math.Round(moneyRatio / (self.PrintAmount * Lv / self.PrintInterval))
+			local roomInPrinter = cap - money
+			timeRemaining = math.Round(roomInPrinter / (self.PrintAmount * Lv / self.PrintInterval))
 			
 			if timeRemaining > 0 then
 				draw.DrawText(getTime(timeRemaining), fontNameBig, w-4 , 32, self.FontColor, TEXT_ALIGN_RIGHT)
 			else
 				draw.DrawText(BaseWars.LANG.Full, fontNameBig, w-4 , 32, self.FontColor, TEXT_ALIGN_RIGHT)
 			end
-			print("timeRemaining", timeRemaining, math.Round(moneyRatio / (self.PrintAmount * Lv / self.PrintInterval)))
 
 			--Money bar BG
 			local BoxX = 88

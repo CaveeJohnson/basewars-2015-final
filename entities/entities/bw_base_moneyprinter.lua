@@ -410,10 +410,11 @@ else
 		return pos, ang, 0.1 / 2
 	end
 
+	local render_dist = 300 * 300
 	function ENT:Draw()
 		self:DrawModel()
 
-		if CLIENT then
+		if CLIENT and LocalPlayer():GetPos():DistToSqr() < render_dist then
 			local pos, ang, scale = self:Calc3D2DParams()
 
 			cam.Start3D2D(pos, ang, scale)

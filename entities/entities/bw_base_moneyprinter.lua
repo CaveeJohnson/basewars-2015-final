@@ -412,7 +412,7 @@ else
 
 	local render_dist = 300 * 300
 
-	local ENT:BaseScreenDraw()
+	local function ENT:BaseScreenDraw()
 		if CLIENT and LocalPlayer():GetPos():DistToSqr(self:GetPos()) < render_dist then
 			local pos, ang, scale = self:Calc3D2DParams()
 

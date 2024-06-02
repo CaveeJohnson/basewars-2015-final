@@ -17,14 +17,5 @@ function ENT:Draw()
 	self:DrawModel()
 	self:BaseScreenDraw()
 end
-local ENT:BaseScreenDraw()
-	if CLIENT and LocalPlayer():GetPos():DistToSqr(self:GetPos()) < render_dist then
-		local pos, ang, scale = self:Calc3D2DParams()
-
-		cam.Start3D2D(pos, ang, scale)
-			pcall(self.DrawDisplay, self, pos, ang, scale)
-		cam.End3D2D()
-	end
-end
 
 ENT.IsValidRaidable = true

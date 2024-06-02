@@ -414,7 +414,7 @@ else
 	function ENT:Draw()
 		self:DrawModel()
 
-		if CLIENT and LocalPlayer():GetPos():DistToSqr() < render_dist then
+		if CLIENT and LocalPlayer():GetPos():DistToSqr(self:GetPos()) < render_dist then
 			local pos, ang, scale = self:Calc3D2DParams()
 
 			cam.Start3D2D(pos, ang, scale)

@@ -411,9 +411,8 @@ else
 	end
 
 	local render_dist = 300 * 300
-	function ENT:Draw()
-		self:DrawModel()
 
+	local ENT:BaseScreenDraw()
 		if CLIENT and LocalPlayer():GetPos():DistToSqr(self:GetPos()) < render_dist then
 			local pos, ang, scale = self:Calc3D2DParams()
 
@@ -421,5 +420,10 @@ else
 				pcall(self.DrawDisplay, self, pos, ang, scale)
 			cam.End3D2D()
 		end
+	end
+
+	function ENT:Draw()
+		self:DrawModel()
+		self:BaseScreenDraw()
 	end
 end

@@ -15,14 +15,7 @@ ENT.BackColor = color_black
 function ENT:Draw()
 	self.FontColor = HSVToColor(CurTime() % 6 * 60, 1, 1)
 	self:DrawModel()
-
-	if CLIENT then
-		local pos, ang, scale = self:Calc3D2DParams()
-
-		cam.Start3D2D(pos, ang, scale)
-			pcall(self.DrawDisplay, self, pos, ang, scale)
-		cam.End3D2D()
-	end
+	self:BaseScreenDraw()
 end
 
 ENT.IsValidRaidable = true
